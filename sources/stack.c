@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/20 17:00:13 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/20 19:54:37 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_stack	*find_last_node(t_stack *stack)
 	if (!stack)
 		return (NULL);
 	search = stack;
-	while (search->next != '\0')
+	while (search->next != NULL)
 		search = search->next;
 	return (search);
 }
@@ -67,6 +67,26 @@ void	append_node(t_stack **stack, t_stack *new_node)
 	}
 	last_node = find_last_node(*stack);
 	last_node->next = new_node;
+	new_node->previous = last_node;
+}
+
+void	prepend_node(t_stack **stack, t_stack *new_node)
+{
+	t_stack	*first_node;
+
+	first_node = *stack;
+	if (new_node == NULL)
+		return ;
+	if (new_node->index == 0)
+	{
+		*stack = new_node;
+		return ;
+	}
+	new_node->next = *stack;
+	new_node->previous->next = NULL;
+	new_node->previous = NULL;
+	new_node->next->previous = new_node;
+	*stack = new_node;
 }
 
 t_stack	*create_new_node(int content, int index)

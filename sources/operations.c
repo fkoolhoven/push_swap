@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:17:44 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/20 17:01:01 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/20 19:57:14 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	swap_a(t_stack **stack_a)
 	store_content = first_node->content;
 	first_node->content = second_node->content;
 	second_node->content = store_content;
+	ft_printf("\n-------------\n");
 	ft_printf("Executed swap_a\n");
 }
 
@@ -38,6 +39,19 @@ void	swap_a(t_stack **stack_a)
 
 // pb (push b): Take the first element at the top of a and put it at the top of b.
 // Do nothing if a is empty.
+void	push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*first_node;
+
+	first_node = *stack_a;
+	*stack_a = first_node->next;
+	reset_indexes(*stack_a);
+	if (*stack_b == NULL)
+		first_node->next = NULL;
+	prepend_node(stack_b, first_node);
+	ft_printf("-------------\n");
+	ft_printf("Executed push_b\n");
+}
 
 // ra (rotate a): Shift up all elements of stack a by 1.
 // The first element becomes the last one.
@@ -55,6 +69,7 @@ void	rotate_a(t_stack **stack_a)
 	first_node->index = last_index;
 	append_node(stack_a, first_node);
 	reset_indexes(*stack_a);
+	ft_printf("-------------\n");
 	ft_printf("Executed rotate_a\n");
 }
 
@@ -65,6 +80,16 @@ void	rotate_a(t_stack **stack_a)
 
 // rra (reverse rotate a): Shift down all elements of stack a by 1.
 // The last element becomes the first one.
+void	reverse_rotate_a(t_stack **stack_a)
+{
+	t_stack	*last_node;
+
+	last_node = find_last_node(*stack_a);
+	prepend_node(stack_a, last_node);
+	reset_indexes(*stack_a);
+	ft_printf("-------------\n");
+	ft_printf("Executed reverse_rotate_a\n");
+}
 
 // rrb (reverse rotate b): Shift down all elements of stack b by 1.
 // The last element becomes the first one.
