@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:14:04 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/01/31 21:03:55 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:21:07 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ char	*free_and_ret_null(char *str1, char *str2);
 
 char	*ft_straddchar(char *s1, char c);
 char	**ft_split_q(char const *s, char c);
+double	ft_atod(char *str);
 
 #endif
