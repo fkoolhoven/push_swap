@@ -14,7 +14,7 @@ RM				= rm -f
 # SRC_FILES	= 
 # SRC_DIR 	= 
 # else
-SRC_FILES 	= main.c stack.c operations.c
+SRC_FILES 	= main.c stack.c swap.c push.c rotate.c reverse_rotate.c
 SRC_DIR 	= sources
 # endif
 

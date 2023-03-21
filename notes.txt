@@ -1,0 +1,10 @@
+To do
+
+- input validation
+- choose alogithm
+- implement algorithm
+- use checker
+- modify atoi
+- free memory for stack
+- fix norminette
+- modify Makefile

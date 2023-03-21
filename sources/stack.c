@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/20 19:54:37 by felicia          ###   ########.fr       */
+/*   Updated: 2023/03/21 11:56:23 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	append_node(t_stack **stack, t_stack *new_node)
 
 	if (new_node == NULL)
 		return ;
-	if (new_node->index == 0)
+	if (*stack == NULL)
 	{
 		*stack = new_node;
 		return ;
@@ -72,18 +72,18 @@ void	append_node(t_stack **stack, t_stack *new_node)
 
 void	prepend_node(t_stack **stack, t_stack *new_node)
 {
-	t_stack	*first_node;
-
-	first_node = *stack;
 	if (new_node == NULL)
 		return ;
-	if (new_node->index == 0)
+	if (*stack == NULL)
 	{
 		*stack = new_node;
 		return ;
 	}
+	if (new_node->next)
+		new_node->next->previous = NULL;
 	new_node->next = *stack;
-	new_node->previous->next = NULL;
+	if (new_node->previous)
+		new_node->previous->next = NULL;
 	new_node->previous = NULL;
 	new_node->next->previous = new_node;
 	*stack = new_node;
@@ -102,10 +102,9 @@ t_stack	*create_new_node(int content, int index)
 	return (new_node);
 }
 
-t_stack	*initialize_stack(int argc, char **argv)
+void	initialize_stack(t_stack **stack, int argc, char **argv)
 {
 	t_stack	*new_node;
-	t_stack	*stack;
 	int		number;
 	int		i;
 	int		index;
@@ -116,11 +115,10 @@ t_stack	*initialize_stack(int argc, char **argv)
 	{
 		number = ft_atoi(argv[i]);
 		new_node = create_new_node(number, index);
-		append_node(&stack, new_node);
+		append_node(stack, new_node);
 		index++;
 		i++;
 	}
-	return (stack);
 }
 
 void	print_linked_list(t_stack *stack)

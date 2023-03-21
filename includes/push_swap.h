@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/20 19:26:00 by felicia          ###   ########.fr       */
+/*   Updated: 2023/03/21 12:12:42 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,22 @@ typedef struct s_stack
 // =====FUNCTIONS===============================================================
 
 void	print_linked_list(t_stack *stack);
-t_stack	*initialize_stack(int argc, char **argv);
+void	initialize_stack(t_stack **stack, int argc, char **argv);
 void	prepend_node(t_stack **stack, t_stack *new_node);
 void	append_node(t_stack **stack, t_stack *new_node);
 t_stack	*find_last_node(t_stack *stack);
 int		stack_size(t_stack *stack);
 void	reset_indexes(t_stack *stack);
 void	swap_a(t_stack **stack_a);
+void	swap_b(t_stack **stack_b);
+void	swap_ab(t_stack **stack_a, t_stack **stack_b);
 void	rotate_a(t_stack **stack_a);
+void	rotate_b(t_stack **stack_b);
+void	rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	reverse_rotate_a(t_stack **stack_a);
+void	reverse_rotate_b(t_stack **stack_b);
+void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
+void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 
 #endif
