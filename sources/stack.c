@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/21 11:56:23 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:06:03 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	reset_indexes(t_stack *stack)
 	}
 }
 
-int	stack_size(t_stack *stack)
+int	calculate_stack_size(t_stack *stack)
 {
 	t_stack	*search;
 	int		count;
