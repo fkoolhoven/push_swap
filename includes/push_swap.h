@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 15:59:30 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:22:46 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*left_pile_top;
 	struct s_stack	*right_pile_top;
-	bool			part_of_list;
+	bool			part_of_ascending_list;
+	bool			part_of_descending_list;
 }	t_stack;
+
+typedef struct s_merge
+{
+	int		a_moves;
+	int		b_moves;
+	char	*a_operation;
+	char	*b_operation;
+	int		move_amount;
+	char	*operation;
+}	t_merge;
 
 // =====FUNCTIONS===============================================================
 
@@ -50,7 +61,8 @@ void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
-t_stack	*find_longest_list(t_stack **stack_a);
+t_stack	*find_longest_ascending_list(t_stack **stack_a);
+t_stack	*find_longest_descending_list(t_stack **stack_a);
 void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list_start);
 
 #endif

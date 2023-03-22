@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   patience.c                                         :+:      :+:    :+:   */
+/*   patience_ascending.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:50:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 15:40:42 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:07:02 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*tag_nodes_as_part_of_list(t_stack **top)
+static t_stack	*tag_nodes_as_part_of_list(t_stack **top)
 {
 	t_stack	*item;
 
@@ -23,7 +23,7 @@ t_stack	*tag_nodes_as_part_of_list(t_stack **top)
 	}
 	while (item)
 	{
-		item->part_of_list = true;
+		item->part_of_ascending_list = true;
 		ft_printf("%i ", item->number);
 		if (!item->left_pile_top)
 			return (item);
@@ -32,7 +32,7 @@ t_stack	*tag_nodes_as_part_of_list(t_stack **top)
 	return (NULL);
 }
 
-void	create_new_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
+static void	create_new_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
 {
 	while (pile_top && pile_top->right_pile_top)
 		pile_top = pile_top->right_pile_top;
@@ -48,7 +48,7 @@ void	create_new_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_t
 	}
 }
 
-void	put_current_node_on_pile(t_stack *current_node, t_stack *pile_top, t_stack *stored, t_stack **first_top)
+static void	put_current_node_on_pile(t_stack *current_node, t_stack *pile_top, t_stack *stored, t_stack **first_top)
 {
 	current_node->right_pile_top = pile_top->right_pile_top;
 	pile_top = current_node; 
@@ -59,7 +59,7 @@ void	put_current_node_on_pile(t_stack *current_node, t_stack *pile_top, t_stack 
 		*first_top = pile_top;
 }
 
-bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
+static bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
 {
 	t_stack	*stored;
 
@@ -79,7 +79,7 @@ bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
 	return (false);
 }
 
-t_stack	*find_longest_list(t_stack **stack_a)
+t_stack	*find_longest_ascending_list(t_stack **stack_a)
 {
 	t_stack	*current_node;
 	t_stack	*pile_top;
