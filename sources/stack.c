@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/21 16:06:03 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:38:46 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ t_stack	*create_new_node(int content, int index)
 	new_node->index = index;
 	new_node->content = content;
 	new_node->next = NULL;
+	new_node->left_pile_top = NULL;
+	new_node->right_pile_top = NULL;
 	return (new_node);
 }
 

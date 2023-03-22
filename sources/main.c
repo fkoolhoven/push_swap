@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/21 17:17:18 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 12:31:10 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		exit (EXIT_FAILURE);
 	}
 	initialize_stack(&stack_a, argc, argv);
-	print_linked_list(stack_a);
+	//print_linked_list(stack_a);
 	longest_list(&stack_a);
 	// swap_a(&stack_a);
 	// print_linked_list(stack_a);
