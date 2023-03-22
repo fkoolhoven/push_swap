@@ -6,28 +6,30 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:50:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 15:19:22 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:40:42 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	tag_nodes_as_part_of_list(t_stack **top)
+t_stack	*tag_nodes_as_part_of_list(t_stack **top)
 {
 	t_stack	*item;
 
 	item = *top;
-	while (item && item->right_pile_top) // move through all the top and find last one
+	while (item && item->right_pile_top)
 	{
 		item = item->right_pile_top;
 	}
-	while (item) // follow way back to find list
+	while (item)
 	{
 		item->part_of_list = true;
 		ft_printf("%i ", item->number);
+		if (!item->left_pile_top)
+			return (item);
 		item = item->left_pile_top;
 	}
-	ft_printf("\n");
+	return (NULL);
 }
 
 void	create_new_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
@@ -77,11 +79,12 @@ bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top)
 	return (false);
 }
 
-void	find_longest_list(t_stack **stack_a)
+t_stack	*find_longest_list(t_stack **stack_a)
 {
 	t_stack	*current_node;
 	t_stack	*pile_top;
 	t_stack	*first_top;
+	t_stack	*list_start;
 	bool	found_pile;
 
 	pile_top = NULL;
@@ -94,5 +97,7 @@ void	find_longest_list(t_stack **stack_a)
 		pile_top = first_top;
 		current_node = current_node->next;
 	}
-	tag_nodes_as_part_of_list(&pile_top);
+	list_start = tag_nodes_as_part_of_list(&pile_top);
+	ft_printf("\n");
+	return (list_start);
 }

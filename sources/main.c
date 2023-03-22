@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 15:22:47 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:59:24 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_stack	*list_start;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -39,8 +40,12 @@ int	main(int argc, char **argv)
 	}
 	initialize_stack(&stack_a, argc, argv);
 	//print_linked_list(stack_a);
-	find_longest_list(&stack_a);
-	//seperate_list_from_rest(stack_a, stack_b);
+	list_start = find_longest_list(&stack_a);
+	seperate_list_from_rest(&stack_a, &stack_b, list_start);
+	print_linked_list(stack_a);
+	ft_printf("~~~~~~~~~~~~~\n");
+	print_linked_list(stack_b);
+
 	// swap_a(&stack_a);
 	// print_linked_list(stack_a);
 

@@ -1,8 +1,9 @@
 To do
 
+- fix swap function
 - input validation
-- choose alogithm
-- implement algorithm
+- implement patience
+- merge sort
 - use checker
 - modify atoi
 - free memory for stack

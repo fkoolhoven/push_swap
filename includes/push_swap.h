@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 15:18:32 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:59:30 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
-void	find_longest_list(t_stack **stack_a);
+t_stack	*find_longest_list(t_stack **stack_a);
+void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list_start);
 
 #endif
