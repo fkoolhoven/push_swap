@@ -6,11 +6,24 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 12:31:10 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:23:31 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+
+// void	validate_input()
+// {
+// 	check for
+// 	- at least 2 args
+// 	- args aren't integers
+// 	- there are duplicates
+// 	- args are bigger than an int
+// 	In case of error, it must display "Error" followed by a ’\n’ on the standard error.
+// 	Errors include for example: some arguments aren’t integers, some arguments are
+// 	bigger than an integer and/or there are duplicates.
+// }
 
 int	main(int argc, char **argv)
 {
