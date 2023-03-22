@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/21 17:42:10 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:18:32 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 
 # include "libft/libft.h"
 # include "ft_printf/include/ft_printf.h"
+# include "stdbool.h"
 
 // =====STRUCTS=================================================================
 
 typedef struct s_stack
 {
 	unsigned int	index;
-	int				content;
+	int				number;
 	struct s_stack	*previous;
 	struct s_stack	*next;
 	struct s_stack	*left_pile_top;
 	struct s_stack	*right_pile_top;
+	bool			part_of_list;
 }	t_stack;
 
 // =====FUNCTIONS===============================================================
@@ -48,6 +50,6 @@ void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
-void	longest_list(t_stack **stack_a);
+void	find_longest_list(t_stack **stack_a);
 
 #endif

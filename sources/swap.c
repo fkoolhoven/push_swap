@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:09:43 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/21 12:20:04 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:15:51 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	swap_top_nodes(t_stack **stack)
 	if (first_node == NULL || first_node->next == NULL)
 		return ;
 	second_node = first_node->next;
-	store_content = first_node->content;
-	first_node->content = second_node->content;
-	second_node->content = store_content;
+	store_content = first_node->number;
+	first_node->number = second_node->number;
+	second_node->number = store_content;
 }
 
 void	swap_a(t_stack **stack_a)

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 11:38:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:18:47 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ t_stack	*create_new_node(int content, int index)
 	if (new_node == NULL)
 		return (NULL);
 	new_node->index = index;
-	new_node->content = content;
+	new_node->number = content;
 	new_node->next = NULL;
 	new_node->left_pile_top = NULL;
 	new_node->right_pile_top = NULL;
+	new_node->part_of_list = false;
 	return (new_node);
 }
 
@@ -128,7 +129,7 @@ void	print_linked_list(t_stack *stack)
 	while (stack)
 	{
 		ft_printf("number at index %i =", stack->index);
-		ft_printf(" %i\n", stack->content);
+		ft_printf(" %i\n", stack->number);
 		stack = stack->next;
 	}
 }
