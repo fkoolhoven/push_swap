@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 20:22:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:00:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b);
 t_stack	*find_longest_ascending_list(t_stack **stack_a);
 t_stack	*find_longest_descending_list(t_stack **stack_a);
 void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list_start);
+void	merge_sorted_parts(t_stack **stack_a, t_stack **stack_b, t_stack *list_start, t_stack *a_start);
 
 #endif

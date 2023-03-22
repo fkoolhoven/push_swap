@@ -1,6 +1,7 @@
 To do
 
 - fix swap function
+- set previous node to end of stack
 - input validation
 - implement patience
 - merge sort
