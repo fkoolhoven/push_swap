@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:17 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 21:48:07 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:07:19 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static void	push_top_node(t_stack **stack_origin, t_stack **stack_destination)
 
 void	push_a(t_stack **stack_b, t_stack **stack_a)
 {
-	//ft_printf("\n\nExecuting push_a\n");
+	ft_printf("pa\n");
 	push_top_node(stack_b, stack_a);
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("\n\nExecuting push_b\n");
+	ft_printf("pb\n");
 	push_top_node(stack_a, stack_b);
 }

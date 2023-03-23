@@ -66,7 +66,7 @@ static bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_
 	stored = NULL;
 	if (current_node == NULL || pile_top == NULL)
 		return (NULL);
-	while (pile_top) // loop never stops // why not getting into if statement?
+	while (pile_top)
 	{
 		if (current_node->number > pile_top->number)
 		{

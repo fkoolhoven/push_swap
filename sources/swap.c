@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:09:43 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 15:15:51 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:06:57 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ static void	swap_top_nodes(t_stack **stack)
 
 void	swap_a(t_stack **stack_a)
 {
-	ft_printf("\n\nExecuting swap_a\n");
+	ft_printf("sa\n");
 	swap_top_nodes(stack_a);
 }
 
 void	swap_b(t_stack **stack_b)
 {
-	ft_printf("\n\nExecuting swap_b\n");
+	ft_printf("sb\n");
 	swap_top_nodes(stack_b);
 }
 
 void	swap_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("\n\nExecuting swap_ab\n");
+	ft_printf("ss\n");
 	swap_top_nodes(stack_a);
 	swap_top_nodes(stack_b);
 }

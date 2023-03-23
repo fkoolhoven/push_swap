@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:46 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 21:38:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:08:08 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ static void	rotate_elements_up(t_stack **stack)
 
 void	rotate_a(t_stack **stack_a)
 {
-	//ft_printf("\n\nExecuting rotate_a\n");
+	ft_printf("ra\n");
 	rotate_elements_up(stack_a);
 }
 
 void	rotate_b(t_stack **stack_b)
 {
-	ft_printf("\n\nExecuting rotate_b\n");
+	ft_printf("rb\n");
 	rotate_elements_up(stack_b);
 }
 
 void	rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_printf("\n\nExecuting rotate_ab\n");
+	ft_printf("rr\n");
 	rotate_elements_up(stack_a);
 	rotate_elements_up(stack_b);
 }

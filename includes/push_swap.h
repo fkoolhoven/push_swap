@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/22 22:00:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/23 19:31:40 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ typedef struct s_stack
 
 typedef struct s_merge
 {
-	int		a_moves;
-	int		b_moves;
-	char	*a_operation;
-	char	*b_operation;
-	int		move_amount;
-	char	*operation;
+	int				optimal;
+	int				stored_optimal;
+	int				stack_a_length;
+	int				a_distance;
+	int				b_distance;
+	int				a_moves;
+	int				b_moves;
+	struct s_stack	*best_option;
 }	t_merge;
 
 // =====FUNCTIONS===============================================================
