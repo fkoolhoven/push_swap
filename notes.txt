@@ -1,5 +1,7 @@
-To do
+Now
+- make algorithm check from top and bottom
 
+Later
 - fix swap function
 - set previous node to end of stack
 - input validation

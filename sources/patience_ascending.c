@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:50:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 20:07:02 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/27 11:54:20 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static t_stack	*tag_nodes_as_part_of_list(t_stack **top)
 	while (item)
 	{
 		item->part_of_ascending_list = true;
-		ft_printf("%i ", item->number);
 		if (!item->left_pile_top)
 			return (item);
 		item = item->left_pile_top;
@@ -98,6 +97,5 @@ t_stack	*find_longest_ascending_list(t_stack **stack_a)
 		current_node = current_node->next;
 	}
 	list_start = tag_nodes_as_part_of_list(&pile_top);
-	ft_printf("\n");
 	return (list_start);
 }

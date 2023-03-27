@@ -6,24 +6,24 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/22 20:03:35 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:52:33 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	reset_indexes(t_stack *stack)
-{
-	int	i;
+// void	reset_indexes(t_stack *stack)
+// {
+// 	int	i;
 
-	i = 0;
-	while (stack)
-	{
-		stack->index = i;
-		stack = stack->next;
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (stack)
+// 	{
+// 		stack->index = i;
+// 		stack = stack->next;
+// 		i++;
+// 	}
+// }
 
 int	calculate_stack_size(t_stack *stack)
 {
@@ -45,11 +45,13 @@ int	calculate_stack_size(t_stack *stack)
 t_stack	*find_last_node(t_stack *stack)
 {
 	t_stack	*search;
+	int		store;
 
 	if (!stack)
 		return (NULL);
 	search = stack;
-	while (search->next != NULL)
+	store = search->number;
+	while (search->next != NULL && search->next->number != store)
 		search = search->next;
 	return (search);
 }
@@ -66,6 +68,7 @@ void	append_node(t_stack **stack, t_stack *new_node)
 		return ;
 	}
 	last_node = find_last_node(*stack);
+	new_node->next = NULL;
 	last_node->next = new_node;
 	new_node->previous = last_node;
 }
@@ -79,10 +82,10 @@ void	prepend_node(t_stack **stack, t_stack *new_node)
 		*stack = new_node;
 		return ;
 	}
-	if (new_node->next)
+	if (new_node->next) // if node was at start of list
 		new_node->next->previous = NULL;
 	new_node->next = *stack;
-	if (new_node->previous)
+	if (new_node->previous) // if node was at end of list
 		new_node->previous->next = NULL;
 	new_node->previous = NULL;
 	new_node->next->previous = new_node;
@@ -127,10 +130,12 @@ void	initialize_stack(t_stack **stack, int argc, char **argv)
 
 void	print_linked_list(t_stack *stack)
 {
-	while (stack)
+	int i = 0;
+	while (stack && i < 100)
 	{
-		ft_printf("number at index %i =", stack->index);
+		ft_printf("number at index %i =", i);
 		ft_printf(" %i\n", stack->number);
 		stack = stack->next;
+		i++;
 	}
 }
