@@ -6,37 +6,60 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/27 17:39:55 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/27 19:06:32 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// check top value of b
-// iterate over a (top and bottom)
-// find distance (amount of moves necessary) always starts at 1 because push
-// optimal = distance
-// if distance < 3 THEN execute 
-// else check next value in b
-// find distance (always starts at 2!)
-// check only for nodes within original distance!
-// if found a closer node execute
+int		find_lowest_number(t_stack **stack_a)
+{
+	t_stack	*search;
+	int		top_location;
+
+	search = *stack_a;
+	top_location = 1;
+	while (search->number < search->next->number && search)
+	{
+		search = search->next;
+		top_location++;
+	}
+	return (top_location);
+}
 
 void	final_rotate(t_stack **stack_a)
 {
-	while (1) // check which way is most efficient to rotate // now only rotating up
+	int		stack_size;
+	int		top_location;
+	int		moves_needed;
+	char	up_or_down;
+
+	stack_size = calculate_stack_size(*stack_a);
+	top_location = find_lowest_number(stack_a);
+	if (top_location <= stack_size / 2)
 	{
-		if ((*stack_a)->number > (*stack_a)->next->number)
-		{
+		moves_needed = top_location;
+		up_or_down = 'u';
+	}
+	else
+	{
+		moves_needed = stack_size - top_location;
+		up_or_down = 'd';
+	}
+	while (moves_needed > 0)
+	{
+		if (up_or_down == 'u')
 			rotate_a(stack_a);
-			break;
-		}
-		rotate_a(stack_a);
+		else if (up_or_down == 'd')
+			reverse_rotate_a(stack_a);
+		moves_needed--;
 	}
 }
 
 void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 {
+
+	// potentially check best direction
 	if (!*stack_b)
 		exit (1);
 	while (merge->a_moves > 0 && merge->b_moves > 0)
@@ -93,17 +116,11 @@ int	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge)
 	while (total_distance < merge->stored_optimal && a_compare && a_compare->next)
 	{
 		if (current_node->number > a_compare->number && current_node->number < a_compare->next->number)
-		{
 			break ;
-		}
 		else if (current_node->number > a_compare->number && current_node->number > a_compare->next->number && a_compare->next->number < a_compare->number)
-		{
 			break ;
-		}
 		else if (current_node->number < a_compare->number && current_node->number < a_compare->next->number && a_compare->next->number < a_compare->number)
-		{
 			break ;
-		}
 		a_compare = a_compare->next;
 		merge->a_distance++;
 		total_distance++;
@@ -130,17 +147,11 @@ int	find_first_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge
 	while (a_compare && a_compare->next)
 	{
 		if (current_node->number > a_compare->number && current_node->number < a_compare->next->number)
-		{
 			break ;
-		}
 		else if (current_node->number > a_compare->number && current_node->number > a_compare->next->number && a_compare->next->number < a_compare->number)
-		{
 			break ;
-		}
 		else if (current_node->number < a_compare->number && current_node->number < a_compare->next->number && a_compare->next->number < a_compare->number)
-		{
 			break ;
-		}
 		a_compare = a_compare->next;
 		merge->a_distance++;
 		total_distance++;
@@ -153,10 +164,6 @@ void	merge_stacks(t_stack **stack_a, t_stack **stack_b)
 	t_merge	*merge;
 	t_stack	*current_node;
 
-	// printf("\nBEFORE MERGING\n");
-	// print_linked_list(*stack_a);
-	// ft_printf("~~~~~~~~~~~~~\n");
-	// print_linked_list(*stack_b);
 	merge = ft_calloc(1, sizeof(t_merge));
 	merge->a_distance = 0;
 	merge->b_distance = 0;
@@ -169,19 +176,13 @@ void	merge_stacks(t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		current_node = *stack_b;
-		//printf("\ncurrent top of b = %i\n", current_node->number);
 		merge->b_distance = 0;
 		merge->stored_optimal = find_first_distance(stack_a, current_node, merge);
 		merge->a_moves = merge->a_distance;
 		merge->b_moves = merge->b_distance;
-		//printf("\ncurrent_top stored_optimal = %i and a_moves = %i and b_moves = %i\n", merge->stored_optimal, merge->a_moves, merge->b_moves);
 		merge->a_distance = 0;
-		// printf("\nfirst stored_optimal = %i\nmerge->a_moves = %i, merge->b_moves = %i\n", merge->stored_optimal, merge->a_moves, merge->b_moves);
 		if (merge->stored_optimal < 3 || current_node == current_node->next)
-		{
-			//printf("\nSTORED OPTIMAL < 3, GOINT TO EXECUTE\n");
 			execute_merge(stack_a, stack_b, merge);
-		}
 		else
 		{
 			while (merge->b_distance < merge->stored_optimal && current_node->next) // next or current node? // what if at end of list?
@@ -191,14 +192,12 @@ void	merge_stacks(t_stack **stack_a, t_stack **stack_b)
 				merge->optimal = find_distance(stack_a, current_node, merge);
 				if (merge->optimal < merge->stored_optimal)
 				{
-					//printf("\nFOUND BETTER NODE = %i\n", current_node->number);
 					merge->stored_optimal = merge->optimal;
 					merge->a_moves = merge->a_distance;
 					merge->b_moves = merge->b_distance;
 				}
 				merge->a_distance = 0;
 			}
-			//printf("\nGOING TO EXECUTE AFTER LOOKING FOR BETTER NODE\n");
 			execute_merge(stack_a, stack_b, merge);
 		}
 

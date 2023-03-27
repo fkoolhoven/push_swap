@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/27 17:52:33 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:28:46 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	initialize_stack(t_stack **stack, int argc, char **argv)
 void	print_linked_list(t_stack *stack)
 {
 	int i = 0;
-	while (stack && i < 100)
+	while (stack)
 	{
 		ft_printf("number at index %i =", i);
 		ft_printf(" %i\n", stack->number);
