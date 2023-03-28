@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/27 17:51:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:04:41 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ t_stack	*find_longest_ascending_list(t_stack **stack_a);
 t_stack	*find_longest_descending_list(t_stack **stack_a);
 void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list_start);
 void	merge_stacks(t_stack **stack_a, t_stack **stack_b);
+void	find_distance_of_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge);
+void	look_for_better_option(t_stack **stack_a, t_stack *current_node, t_merge *merge);
+int		find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge);
+bool	in_ideal_position(t_stack **stack_a, t_stack *current_node);
+bool	found_right_position(t_stack *current_node, t_stack *a_compare);
 void	final_rotate(t_stack **stack_a);
 
 #endif

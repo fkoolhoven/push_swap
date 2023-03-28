@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:46 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/27 12:39:20 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:26:38 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@ static void	rotate_elements_up(t_stack **stack)
 	first_node = *stack;
 	if (first_node == NULL || first_node->next == NULL)
 		return ;
+	
 	*stack = first_node->next;
 	(*stack)->previous = NULL;
 	first_node->next = NULL;
 	append_node(stack, first_node);
 	//reset_indexes(*stack);
 }
+
+// static void	rotate_elements_up(t_stack **stack)
+// {
+// 	t_stack	*to_push;
+
+// 	to_push = 
+// }
 
 void	rotate_a(t_stack **stack_a)
 {
