@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/28 15:04:41 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:12:43 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct s_merge
 	int				optimal;
 	int				stored_optimal;
 	int				stack_a_length;
+	int				amount_of_moves_needed;
+	char			a_up_or_down;
+	char			b_up_or_down;
 	int				a_distance;
 	int				b_distance;
 	int				a_moves;
@@ -68,6 +71,7 @@ void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list
 void	merge_stacks(t_stack **stack_a, t_stack **stack_b);
 void	find_distance_of_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge);
 void	look_for_better_option(t_stack **stack_a, t_stack *current_node, t_merge *merge);
+void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
 int		find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge);
 bool	in_ideal_position(t_stack **stack_a, t_stack *current_node);
 bool	found_right_position(t_stack *current_node, t_stack *a_compare);
