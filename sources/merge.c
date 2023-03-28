@@ -6,13 +6,27 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/28 16:13:22 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:13:47 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	merge_down(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
+void	merge_rra_rb(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
+{
+	while (merge->a_moves > 0)
+	{
+		reverse_rotate_a(stack_a);
+		merge->a_moves--;
+	}
+	while (merge->b_moves > 0 )
+	{
+		rotate_b(stack_b);
+		merge->b_moves--;
+	}
+}
+
+void	merge_ra_rrb(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 {
 	while (merge->a_moves > 0)
 	{
@@ -26,7 +40,7 @@ void	merge_down(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 	}
 }
 
-void	merge_up(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
+void	merge_ra_rb(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 {
 	while (merge->a_moves > 0 && merge->b_moves > 0 && merge->b_up_or_down)
 	{
@@ -48,10 +62,14 @@ void	merge_up(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 
 void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge) // potentially check best direction
 {
-	if (merge->b_up_or_down == 'u')
-		merge_up(stack_a, stack_b, merge);
-	else if (merge->b_up_or_down == 'd')
-		merge_down(stack_a, stack_b, merge);
+	if (merge->b_up_or_down == 'u' && merge->a_up_or_down == 'u')
+		merge_ra_rb(stack_a, stack_b, merge);
+	else if (merge->b_up_or_down == 'd' && merge->a_up_or_down == 'u')
+		merge_ra_rrb(stack_a, stack_b, merge);
+	else if (merge->b_up_or_down == 'u' && merge->a_up_or_down == 'd')
+		merge_rra_rb(stack_a, stack_b, merge);
+	// else if (merge->b_up_or_down == 'd' && merge->a_up_or_down == 'd')
+		
 	push_a(stack_b, stack_a);
 	merge->stack_a_length++;
 }

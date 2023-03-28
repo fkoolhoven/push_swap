@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:03:01 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/28 16:16:07 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:20:01 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	look_for_better_option(t_stack **stack_a, t_stack *current_node, t_merge *m
 			merge->stored_optimal = merge->optimal;
 			merge->a_moves = merge->a_distance;
 			merge->b_moves = merge->b_distance;
+			merge->b_up_or_down = 'u';
+			merge->a_up_or_down = 'u';
 		}
 		merge->a_distance = 0;
 	}
@@ -74,6 +76,7 @@ void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge
 			merge->a_moves = merge->a_distance;
 			merge->b_moves = merge->b_distance;
 			merge->b_up_or_down = 'd';
+			merge->a_up_or_down = 'u';
 		}
 		merge->a_distance = 0;
 		current_node = current_node->previous;
@@ -82,11 +85,20 @@ void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge
 
 void	find_distance_of_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge)
 {
-	merge->b_distance = 0;
+	merge->a_up_or_down = 'u';
 	merge->b_up_or_down = 'u';
+	merge->b_distance = 0;
 	merge->stored_optimal = merge->stack_a_length;
 	merge->stored_optimal = find_distance(stack_a, current_node, merge);
-	merge->a_moves = merge->a_distance;
+	merge->amount_of_moves_needed = merge->a_distance;
+	if (merge->stored_optimal > merge->stack_a_length / 2)
+	{
+		merge->a_moves = merge->stack_a_length - merge->a_distance;
+		merge->stored_optimal = merge->a_moves;
+		merge->a_up_or_down = 'd';
+	}
+	else
+		merge->a_moves = merge->a_distance;
 	merge->b_moves = merge->b_distance;
 	merge->a_distance = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:24:51 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/28 14:28:42 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:28:17 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	push_unsorted_numbers(t_stack *current_node, t_stack **stack_a, t_stack **stack_b, int previous_value_pushed)
 {
 	push_b(stack_a, stack_b);
-	if (current_node->number < previous_value_pushed)
+	if (current_node->number > previous_value_pushed)
 		rotate_b(stack_b);	
 }
 
@@ -29,7 +29,7 @@ int	push_descending_list(t_stack *current_node, t_stack **stack_a, t_stack **sta
 	else
 		previous_value_pushed = current_node->number;
     push_b(stack_a, stack_b);
-	rotate_b(stack_b);
+	//rotate_b(stack_b);
 	return (previous_value_pushed);
 }
 
@@ -55,7 +55,7 @@ void	seperate_list_from_rest(t_stack **stack_a, t_stack **stack_b, t_stack *list
 		}
 		if (!current_node->part_of_ascending_list && current_node->part_of_descending_list) // part of ascending list
 			previous_value_pushed = push_descending_list(current_node, stack_a, stack_b);
-        else if (!current_node->part_of_ascending_list && !current_node->part_of_descending_list) // random numbers
+		else if (!current_node->part_of_ascending_list && !current_node->part_of_descending_list) // random numbers
 			push_unsorted_numbers(current_node, stack_a, stack_b, previous_value_pushed);
 		else // part of asecnding list
 			rotate_a(stack_a);
