@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/28 16:02:52 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:42:29 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	// print_linked_list(stack_b);
 	merge_stacks(&stack_a, &stack_b);
 	final_rotate(&stack_a);
-	// merge_sorted_parts(&stack_a, &stack_b, descending_list_start, ascending_list_start);
+	//merge_sorted_parts(&stack_a, &stack_b, descending_list_start, ascending_list_start);
 	// printf("\nAT END\n");
 	// print_linked_list(stack_a);
 	// ft_printf("~~~~~~~~~~~~~\n");
