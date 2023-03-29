@@ -1,22 +1,28 @@
-NAME 			= push_swap
-LIBFT			= $(addprefix $(LIBFT_DIR)/,libft.a)
-LIBFT_DIR		= includes/libft
-FT_PRINTF		= $(addprefix $(FT_PRINTF_DIR)/,libftprintf.a)
-FT_PRINTF_DIR	= includes/ft_printf
-LIBS			= $(LIBFT) $(FT_PRINTF)
-OBJ_FILES		= $(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
-OBJ_DIR 		= objects
-CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror
-RM				= rm -f
-
-# ifdef BONUS
-# SRC_FILES	= 
-# SRC_DIR 	= 
-# else
-SRC_FILES 	= main.c stack.c swap.c push.c rotate.c reverse_rotate.c patience.c sort.c merge.c finalize.c checker.c distance.c
-SRC_DIR 	= sources
-# endif
+NAME 			= 	push_swap
+LIBFT			= 	$(addprefix $(LIBFT_DIR)/,libft.a)
+LIBFT_DIR		= 	includes/libft
+FT_PRINTF		= 	$(addprefix $(FT_PRINTF_DIR)/,libftprintf.a)
+FT_PRINTF_DIR	= 	includes/ft_printf
+LIBS			= 	$(LIBFT) $(FT_PRINTF)
+CC 				= 	cc
+CFLAGS 			= 	-Wall -Wextra -Werror
+RM				= 	rm -f
+OBJ_DIR 		= 	objects
+OBJ_FILES		= 	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
+SRC_DIR 		= 	sources
+SRC_FILES 		= 	main.c \
+					stack.c \
+					patience_piles.c \
+					patience_sort.c \
+					merge.c \
+					merge_distance.c \
+					merge_checker.c \
+					merge_patterns.c \
+					operation_push.c \
+					operation_reverse_rotate.c \
+					operation_rotate.c \
+					operation_swap.c \
+					final_rotate.c
 
 all: $(NAME)
 
@@ -42,8 +48,5 @@ fclean: clean
 	make fclean -C $(FT_PRINTF_DIR)
 
 re: fclean all
-
-bonus:
-	$(MAKE) BONUS=1 all
 
 .PHONY: all, clean, fclean, re

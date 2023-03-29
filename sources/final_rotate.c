@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finalize.c                                         :+:      :+:    :+:   */
+/*   final_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:29:18 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/28 14:29:41 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:11:30 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		find_lowest_number(t_stack **stack_a)
+int	find_lowest_number(t_stack **stack_a)
 {
 	t_stack	*search;
 	int		top_location;

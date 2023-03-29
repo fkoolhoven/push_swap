@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distance.c                                         :+:      :+:    :+:   */
+/*   merge_distance.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:03:01 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/28 18:41:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:31:52 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge) // now only tooking top to bottom but also wanna check bottom to top incase reverse rotate a is more efficient
+int	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge)
 {
 	t_stack	*a_compare;
 	int		total_distance;
@@ -29,7 +29,7 @@ int	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge) // n
 	while (total_distance < merge->stored_optimal && a_compare->next) // check from top
 	{
 		if (found_right_position(current_node, a_compare))
-			return (total_distance) ;
+			return (total_distance);
 		a_compare = a_compare->next;
 		merge->a_distance++;
 		total_distance++;
@@ -38,38 +38,28 @@ int	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge) // n
 	a_compare = find_last_node(*stack_a);
 	total_distance = merge->b_distance + 1;
 	merge->a_distance = 1;
-	while (total_distance < merge->stored_optimal && a_compare->previous) // check from bottom // maybe always do this instead of only if not found at top?
+	while (total_distance < merge->stored_optimal && a_compare->previous) // check from bottom
 	{
-		//printf("\nbefore\n");
 		if (found_right_position(current_node, a_compare->previous))
-			return (total_distance) ;
-		//printf("\after\n");
+			return (total_distance);
 		a_compare = a_compare->previous;
 		merge->a_distance++;
 		total_distance++;
 	}
-	// check from bottom
 	return (total_distance);
 }
 
-// check if option at bottom is more efficient
-// works exactly the same way as top
-// but if bottom is more efficient than should rotate b up, set some variable for tis DO THIS IN EXECUTE MERGE!!!
-// but check if double moves of top isn't more efficient! how to calculate this? amount_of_moves_needed
-
-void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
+void	search_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 {
 	t_stack	*current_node;
-	
+
 	current_node = find_last_node(*stack_b);
 	merge->b_distance = 0;
 	while (merge->b_distance < merge->stored_optimal && current_node->previous)
 	{
 		merge->b_distance++;
 		merge->optimal = find_distance(stack_a, current_node, merge);
-
-
-		if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'u' && merge->optimal < merge->amount_of_moves_needed) // maybe wrong
+		if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'u' && merge->optimal < merge->amount_of_moves_needed) // condition maybe wrong
 		{
 			merge->stored_optimal = merge->optimal;
 			merge->a_moves = merge->a_distance;
@@ -78,8 +68,7 @@ void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge
 			merge->b_up_or_down = 'd';
 			calculate_amount_of_moves_needed(merge, 3);
 		}
-
-		else if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'd' && merge->optimal < merge->amount_of_moves_needed) // probably wrong
+		else if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'd' && merge->optimal < merge->amount_of_moves_needed) // but amount of moved needed could be smaller than merge->optimal
 		{
 			merge->stored_optimal = merge->optimal;
 			merge->a_moves = merge->a_distance;
@@ -93,15 +82,14 @@ void	look_for_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge
 	}
 }
 
-void	look_for_better_option_top(t_stack **stack_a, t_stack *current_node, t_merge *merge) // perhaps also check a from bottom 
+void	search_better_option_top(t_stack **stack_a, t_stack *current_node, t_merge *merge)
 {
 	while (merge->b_distance < merge->stored_optimal && current_node->next)
 	{
 		current_node = current_node->next;
 		merge->b_distance++;
 		merge->optimal = find_distance(stack_a, current_node, merge);
-
-		if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'u')
+		if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'u') // but amount of moved needed could be smaller than merge->optimal
 		{
 			merge->stored_optimal = merge->optimal;
 			merge->a_moves = merge->a_distance;
@@ -110,7 +98,7 @@ void	look_for_better_option_top(t_stack **stack_a, t_stack *current_node, t_merg
 			merge->b_up_or_down = 'u';
 			calculate_amount_of_moves_needed(merge, 1);
 		}
-		else if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'd' && merge->optimal < merge->amount_of_moves_needed) // probably wrong
+		else if (merge->optimal < merge->stored_optimal && merge->up_down_switch == 'd' && merge->optimal < merge->amount_of_moves_needed) // condition maybe wrong
 		{
 			merge->stored_optimal = merge->optimal;
 			merge->a_moves = merge->a_distance;
@@ -123,7 +111,7 @@ void	look_for_better_option_top(t_stack **stack_a, t_stack *current_node, t_merg
 	}
 }
 
-void	find_distance_of_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge)
+void	find_distance_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge)
 {
 	merge->a_up_or_down = 'u';
 	merge->b_up_or_down = 'u';

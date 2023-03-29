@@ -6,24 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/27 18:28:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/29 12:03:37 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	reset_indexes(t_stack *stack)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (stack)
-// 	{
-// 		stack->index = i;
-// 		stack = stack->next;
-// 		i++;
-// 	}
-// }
 
 int	calculate_stack_size(t_stack *stack)
 {
@@ -92,14 +79,13 @@ void	prepend_node(t_stack **stack, t_stack *new_node)
 	*stack = new_node;
 }
 
-t_stack	*create_new_node(int content, int index)
+t_stack	*create_new_node(int content)
 {
 	t_stack	*new_node;
 
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (new_node == NULL)
 		return (NULL);
-	new_node->index = index;
 	new_node->number = content;
 	new_node->next = NULL;
 	new_node->left_pile_top = NULL;
@@ -114,28 +100,25 @@ void	initialize_stack(t_stack **stack, int argc, char **argv)
 	t_stack	*new_node;
 	int		number;
 	int		i;
-	int		index;
 
-	index = 0;
 	i = 1;
 	while (i < argc)
 	{
 		number = ft_atoi(argv[i]);
-		new_node = create_new_node(number, index);
+		new_node = create_new_node(number);
 		append_node(stack, new_node);
-		index++;
 		i++;
 	}
 }
 
-void	print_linked_list(t_stack *stack)
-{
-	int i = 0;
-	while (stack)
-	{
-		ft_printf("number at index %i =", i);
-		ft_printf(" %i\n", stack->number);
-		stack = stack->next;
-		i++;
-	}
-}
+// void	print_linked_list(t_stack *stack)
+// {
+// 	int i = 0;
+// 	while (stack)
+// 	{
+// 		ft_printf("number at index %i =", i);
+// 		ft_printf(" %i\n", stack->number);
+// 		stack = stack->next;
+// 		i++;
+// 	}
+// }

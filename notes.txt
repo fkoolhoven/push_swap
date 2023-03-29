@@ -1,12 +1,9 @@
 Now
-- make algorithm check from top and bottom
+- improve readability of merging
 
 Later
 - fix swap function
-- set previous node to end of stack
 - input validation
-- implement patience
-- merge sort
 - use checker
 - modify atoi
 - free memory for stack
