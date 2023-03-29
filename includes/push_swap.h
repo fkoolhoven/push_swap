@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/29 12:31:35 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/29 16:52:22 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ typedef struct s_merge
 {
 	int				optimal;
 	int				stored_optimal;
-	int				stack_a_length;
-	int				amount_of_moves_needed;
 	char			up_down_switch;
 	char			a_up_or_down;
 	char			b_up_or_down;
 	int				a_distance;
 	int				b_distance;
+	int				amount_of_moves_needed_stored;
 	int				a_moves;
 	int				b_moves;
+	int				stack_a_length;
 }	t_merge;
 
 // =====FUNCTIONS===============================================================
@@ -65,14 +65,14 @@ void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
-t_stack	*find_longest_list(t_stack **stack_a, char asc_or_desc);
-void	seperate_lists(t_stack **stack_a, t_stack **stack_b, t_stack *list_start);
+void	find_longest_list(t_stack **stack_a, char asc_or_desc);
+void	seperate_lists(t_stack **stack_a, t_stack **stack_b);
 void	merge_stacks(t_stack **stack_a, t_stack **stack_b);
 void	find_distance_first_node(t_stack **stack_a, t_stack *current_node, t_merge *merge);
 void	search_better_option_top(t_stack **stack_a, t_stack *current_node, t_merge *merge);
 void	search_better_option_bottom(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
-int		find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge);
-void	calculate_amount_of_moves_needed(t_merge *merge, int option);
+void	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge);
+int		calculate_amount_of_moves_needed(t_merge *merge, int option);
 bool	in_ideal_position(t_stack **stack_a, t_stack *current_node);
 bool	found_right_position(t_stack *current_node, t_stack *a_compare);
 void	merge_ra_rb(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
@@ -80,5 +80,6 @@ void	merge_ra_rrb(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
 void	merge_rra_rb(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
 void	merge_rra_rrb(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
 void	final_rotate(t_stack **stack_a);
+void	handle_errors(char *message);
 
 #endif

@@ -3,9 +3,11 @@ Now
 
 Later
 - fix swap function
+- fix error a is already sorted
 - input validation
 - use checker
 - modify atoi
 - free memory for stack
 - fix norminette
 - modify Makefile
+- check for memory leaks

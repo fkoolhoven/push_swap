@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/29 12:03:37 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:41:51 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ t_stack	*create_new_node(int content)
 {
 	t_stack	*new_node;
 
-	new_node = (t_stack *)malloc(sizeof(t_stack));
+	new_node = ft_calloc(1, sizeof(t_stack));
 	if (new_node == NULL)
-		return (NULL);
+		handle_errors("failed to alloc for new node");
 	new_node->number = content;
 	new_node->next = NULL;
 	new_node->left_pile_top = NULL;
@@ -111,14 +111,14 @@ void	initialize_stack(t_stack **stack, int argc, char **argv)
 	}
 }
 
-// void	print_linked_list(t_stack *stack)
-// {
-// 	int i = 0;
-// 	while (stack)
-// 	{
-// 		ft_printf("number at index %i =", i);
-// 		ft_printf(" %i\n", stack->number);
-// 		stack = stack->next;
-// 		i++;
-// 	}
-// }
+void	print_linked_list(t_stack *stack)
+{
+	int i = 0;
+	while (stack)
+	{
+		ft_printf("number at index %i =", i);
+		ft_printf(" %i\n", stack->number);
+		stack = stack->next;
+		i++;
+	}
+}
