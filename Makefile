@@ -15,9 +15,11 @@ SRC_FILES 		= 	main.c \
 					patience_piles.c \
 					patience_sort.c \
 					merge_stacks.c \
+					merge_options.c \
 					merge_distance.c \
 					merge_checker.c \
-					merge_patterns.c \
+					merge_optimal.c \
+					merge_execute.c \
 					operation_push.c \
 					operation_reverse_rotate.c \
 					operation_rotate.c \
