@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/31 17:21:22 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/31 18:01:39 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@
 // {
 // 	check for
 // 	- at least 2 args
-// 	- args aren't integers
-// 	- there are duplicates
-// 	- args are bigger than an int
+
 // 	In case of error, it must display "Error" followed by a ’\n’ on the standard error.
 // 	Errors include for example: some arguments aren’t integers, some arguments are
 // 	bigger than an integer and/or there are duplicates.
 // }
 
-void	reset_piles(t_stack **stack_a)
+void	reset_piles(t_stack **stack_a) // move to different file?
 {
 	t_stack	*current_node;
 
@@ -37,6 +35,59 @@ void	reset_piles(t_stack **stack_a)
 	}
 }
 
+
+bool	check_for_duplicate_numbers(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc && argv[j])
+		{
+			if (ft_strncmp(argv[i], argv[j], 11) == 0)
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
+}
+
+bool	check_for_non_integers(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (i < argc)
+	{
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j]) == 0)
+				return (false);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (true);
+}
+
+void	validate_input(int argc, char **argv)
+{
+	if (argc <= 1)
+		handle_errors("too few arguments");
+	if (!check_for_non_integers(argc, argv))
+		handle_errors("arguments should only be integers");
+	if (!check_for_duplicate_numbers(argc, argv))
+		handle_errors("duplicte numbers not allowed");
+	// check if args are bigger than an int? using strncmp maybe?
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -44,11 +95,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc <= 1)
-	{
-		ft_putendl_fd("Error: too few arguments", STDERR_FILENO);
-		exit (EXIT_FAILURE);
-	}
+	validate_input(argc, argv);
 	initialize_stack(&stack_a, argc, argv);
 	find_longest_list(&stack_a, 'a');
 	reset_piles(&stack_a);

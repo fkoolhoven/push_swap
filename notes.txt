@@ -1,9 +1,10 @@
 Now
-- improve readability of merging
+- input validation
 
 Later
 - fix swap function
 - fix error a is already sorted
+- write solvers for small amount of ints
 - input validation
 - use checker
 - modify atoi
