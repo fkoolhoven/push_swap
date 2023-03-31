@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/29 16:56:52 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:53:33 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int	main(int argc, char **argv)
 	reset_piles(&stack_a);
 	find_longest_list(&stack_a, 'd');
 	seperate_lists(&stack_a, &stack_b);
-	// printf("\nBEFORE MERGING\n");
-	// print_linked_list(stack_a);
-	// ft_printf("~~~~~~~~~~~~~\n");
-	// print_linked_list(stack_b);
+	printf("\nBEFORE MERGING\n");
+	print_linked_list(stack_a);
+	ft_printf("~~~~~~~~~~~~~\n");
+	print_linked_list(stack_b);
 	merge_stacks(&stack_a, &stack_b);
 	final_rotate(&stack_a);
 	printf("\nAT END\n");

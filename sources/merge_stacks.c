@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/29 16:47:50 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:56:23 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge)
 	else if (merge->b_up_or_down == 'd' && merge->a_up_or_down == 'd')
 		merge_rra_rrb(stack_a, stack_b, merge);
 	push_a(stack_b, stack_a);
+	printf("\nAFTER PUSHING\n");
+	print_linked_list(*stack_a);
+	ft_printf("~~~~~~~~~~~~~\n");
+	print_linked_list(*stack_b);
 	merge->stack_a_length++;
 }
 
