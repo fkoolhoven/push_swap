@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge.c                                            :+:      :+:    :+:   */
+/*   merge_stacks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/31 17:19:14 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:33:38 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_merge	*initialize_merge_struct(t_stack **stack_a)
 
 	merge = ft_calloc(1, sizeof(t_merge));
 	if (merge == NULL)
-		handle_errors("failed to alloc for merge struct");
+		ft_error_message("failed to alloc for merge struct");
 	merge->up_down_switch = 'u';
 	merge->a_up_or_down = 'u';
 	merge->b_up_or_down = 'u';

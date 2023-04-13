@@ -6,23 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/31 18:01:39 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:33:31 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void	validate_input()
-// {
-// 	check for
-// 	- at least 2 args
-
-// 	In case of error, it must display "Error" followed by a ’\n’ on the standard error.
-// 	Errors include for example: some arguments aren’t integers, some arguments are
-// 	bigger than an integer and/or there are duplicates.
-// }
-
-void	reset_piles(t_stack **stack_a) // move to different file?
+void	reset_piles(t_stack **stack_a) // move to different file? // delete? maybe not needed
 {
 	t_stack	*current_node;
 
@@ -35,57 +25,88 @@ void	reset_piles(t_stack **stack_a) // move to different file?
 	}
 }
 
-
-bool	check_for_duplicate_numbers(int argc, char **argv)
+bool	stack_a_already_sorted(t_stack **stack_a)
 {
-	int	i;
-	int	j;
+	t_stack	*check;
+	int		top_of_a;
 
-	i = 1;
-	while (i < argc)
+	check = *stack_a;
+	top_of_a = check->number;
+	while (check->next != NULL)
 	{
-		j = i + 1;
-		while (j < argc && argv[j])
-		{
-			if (ft_strncmp(argv[i], argv[j], 11) == 0)
-				return (false);
-			j++;
-		}
-		i++;
+		if (check->number > check->next->number)
+			break ;
+		check = check->next;
+	}
+	if (check->next == NULL)
+		return (true);
+	check = check->next;
+	if (check->number > top_of_a)
+		return (false);
+	while (check->next != NULL)
+	{
+		if (check->number > check->next->number || check->number > top_of_a || check->next->number > top_of_a)
+			return (false);
+		check = check->next;
 	}
 	return (true);
 }
 
-bool	check_for_non_integers(int argc, char **argv)
+bool	check_for_duplicate_numbers(int argc, char **argv, int i)
 {
-	int	i;
 	int	j;
 
-	i = 1;
-	j = 0;
-	while (i < argc)
+	j = i + 1;
+	while (j < argc && argv[j])
 	{
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) == 0)
-				return (false);
-			j++;
-		}
-		i++;
-		j = 0;
+		if (ft_strncmp(argv[i], argv[j], 11) == 0)
+			return (false);
+		j++;
 	}
+	return (true);
+}
+
+bool	check_for_non_integers(char **argv, int i)
+{
+	int	j;
+
+	j = 0;
+	if (argv[i][j] == '-')
+		j++;
+	if (ft_isdigit(argv[i][j]) == 0)
+		return (false);
+	while (argv[i][j])
+	{
+		if (ft_isdigit(argv[i][j]) == 0)
+			return (false);
+		j++;
+	}
+	i++;
+	j = 0;
 	return (true);
 }
 
 void	validate_input(int argc, char **argv)
 {
+	int			i;
+	long long	number;
+
 	if (argc <= 1)
-		handle_errors("too few arguments");
-	if (!check_for_non_integers(argc, argv))
-		handle_errors("arguments should only be integers");
-	if (!check_for_duplicate_numbers(argc, argv))
-		handle_errors("duplicte numbers not allowed");
-	// check if args are bigger than an int? using strncmp maybe?
+		ft_error_message("too few arguments");
+	i = 1;
+	while (i < argc)
+	{
+		if (!check_for_non_integers(argv, i))
+			ft_error_message("arguments should only be integers");
+		if (!check_for_duplicate_numbers(argc, argv, i))
+			ft_error_message("duplicte numbers not allowed");
+		number = ft_atol(argv[i]);
+		if (number < INT_MIN)
+			ft_error_message("argument(s) smaller than INT_MAX");
+		if (number > INT_MAX)
+			ft_error_message("argument(s) bigger than INT_MAX");
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -96,7 +117,28 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	validate_input(argc, argv);
+	if (argc == 2)
+		return (EXIT_SUCCESS);
 	initialize_stack(&stack_a, argc, argv);
+	if (stack_a_already_sorted(&stack_a))
+	{
+		final_rotate(&stack_a);
+		// printf("\nALREADY SORTED BEFORE PATIENCE\n");
+		// print_linked_list(stack_a);
+		// ft_printf("~~~~~~~~~~~~~\n");
+		// print_linked_list(stack_b);
+		return (EXIT_SUCCESS);
+	}
+	if (argc == 4)
+	{
+		swap_a(&stack_a);
+		final_rotate(&stack_a);
+		// printf("\nLIST OF THREE\n");
+		// print_linked_list(stack_a);
+		// ft_printf("~~~~~~~~~~~~~\n");
+		// print_linked_list(stack_b);
+		return (EXIT_SUCCESS);
+	}
 	find_longest_list(&stack_a, 'a');
 	reset_piles(&stack_a);
 	find_longest_list(&stack_a, 'd');

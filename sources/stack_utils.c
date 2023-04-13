@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/29 15:41:51 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:33:42 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_stack	*create_new_node(int content)
 
 	new_node = ft_calloc(1, sizeof(t_stack));
 	if (new_node == NULL)
-		handle_errors("failed to alloc for new node");
+		ft_error_message("failed to alloc for new node");
 	new_node->number = content;
 	new_node->next = NULL;
 	new_node->left_pile_top = NULL;

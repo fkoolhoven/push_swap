@@ -1,13 +1,11 @@
 Now
-- input validation
+- use checker
 
 Later
-- fix swap function
-- fix error a is already sorted
-- write solvers for small amount of ints
-- input validation
+- make not updating libft when changes are made
+- fix swap function?
 - use checker
-- modify atoi
+- modify atoi?
 - free memory for stack
 - fix norminette
 - modify Makefile

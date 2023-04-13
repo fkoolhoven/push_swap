@@ -24,8 +24,7 @@ SRC_FILES 		= 	main.c \
 					operation_reverse_rotate.c \
 					operation_rotate.c \
 					operation_swap.c \
-					final_rotate.c \
-					error_handling.c
+					final_rotate.c
 
 all: $(NAME)
 

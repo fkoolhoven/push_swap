@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/03/31 17:10:30 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:29:28 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft/libft.h"
 # include "ft_printf/include/ft_printf.h"
 # include "stdbool.h"
+# include <limits.h>
 
 // =====STRUCTS=================================================================
 
@@ -47,6 +48,7 @@ typedef struct s_merge
 
 void	print_linked_list(t_stack *stack);
 void	initialize_stack(t_stack **stack, int argc, char **argv);
+bool	stack_a_already_sorted(t_stack **stack_a);
 void	prepend_node(t_stack **stack, t_stack *new_node);
 void	append_node(t_stack **stack, t_stack *new_node);
 t_stack	*find_last_node(t_stack *stack);
