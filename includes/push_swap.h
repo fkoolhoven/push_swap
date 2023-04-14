@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/14 19:50:36 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:08:41 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_merge
 void	print_linked_list(t_stack *stack);
 void	validate_input(int argc, char **argv);
 void	initialize_stack(t_stack **stack, int argc, char **arguments);
-bool	stack_a_already_sorted(t_stack **stack_a);
+bool	stack_a_already_sorted(t_stack *stack_a);
 void	prepend_node(t_stack **stack, t_stack *new_node);
 void	append_node(t_stack **stack, t_stack *new_node);
 t_stack	*find_last_node(t_stack *stack);

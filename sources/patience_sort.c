@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:24:51 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/13 16:07:04 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:09:26 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	seperate_lists(t_stack **stack_a,
 	previous = current_node->number;
 	while (i < stack_size && *stack_a)
 	{
-		if (stack_a_already_sorted(stack_a))
+		if (stack_a_already_sorted(*stack_a))
 			break ;
 		current_node = *stack_a;
 		if (current_node->part_of_ascending_list)

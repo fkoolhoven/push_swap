@@ -6,17 +6,14 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/14 19:46:09 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:12:30 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	reset_piles(t_stack **stack_a) // move to different file?
+void	reset_piles(t_stack *current_node) // move to different file?
 {
-	t_stack	*current_node;
-
-	current_node = *stack_a;
 	while (current_node)
 	{
 		current_node->left_pile_top = NULL;
@@ -25,31 +22,29 @@ void	reset_piles(t_stack **stack_a) // move to different file?
 	}
 }
 
-bool	stack_a_already_sorted(t_stack **stack_a)
+bool	stack_a_already_sorted(t_stack *stack_a)
 {
-	t_stack	*check;
 	int		top_of_a;
 
-	check = *stack_a;
-	top_of_a = check->number;
-	while (check->next != NULL)
+	top_of_a = stack_a->number;
+	while (stack_a->next != NULL)
 	{
-		if (check->number > check->next->number)
+		if (stack_a->number > stack_a->next->number)
 			break ;
-		check = check->next;
+		stack_a = stack_a->next;
 	}
-	if (check->next == NULL)
+	if (stack_a->next == NULL)
 		return (true);
-	check = check->next;
-	if (check->number > top_of_a)
+	stack_a = stack_a->next;
+	if (stack_a->number > top_of_a)
 		return (false);
-	while (check->next != NULL)
+	while (stack_a->next != NULL)
 	{
-		if (check->number > check->next->number
-			|| check->number > top_of_a
-			|| check->next->number > top_of_a)
+		if (stack_a->number > stack_a->next->number
+			|| stack_a->number > top_of_a
+			|| stack_a->next->number > top_of_a)
 			return (false);
-		check = check->next;
+		stack_a = stack_a->next;
 	}
 	return (true);
 }
@@ -102,7 +97,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 		return (EXIT_SUCCESS);
 	initialize_stack(&stack_a, argc, arguments);
-	if (stack_a_already_sorted(&stack_a))
+	if (stack_a_already_sorted(stack_a))
 	{
 		final_rotate(&stack_a);
 		// printf("\nALREADY SORTED BEFORE PATIENCE\n");
@@ -122,7 +117,7 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	}
 	find_longest_list(&stack_a, 'a');
-	reset_piles(&stack_a);
+	reset_piles(stack_a);
 	find_longest_list(&stack_a, 'd');
 	seperate_lists(&stack_a, &stack_b);
 	// printf("\nBEFORE MERGING\n");
