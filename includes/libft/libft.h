@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:14:04 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/13 16:35:59 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:51:04 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char		**ft_split_q(char const *s, char c);
 double		ft_atod(char *str);
 long long	ft_atol(const char *str);
 void		ft_error_message(char *message);
+void		ft_put_ptr_array_fd(char **two_d_array, int fd);
 
 // =====get_next_line===========================================================
 

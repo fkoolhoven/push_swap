@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   operation_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:09:43 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/23 17:06:57 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:41:06 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	swap_top_nodes(t_stack **stack)
 	int		store_content;
 
 	first_node = *stack;
-	if (first_node == NULL || first_node->next == NULL)
-		return ;
 	second_node = first_node->next;
 	store_content = first_node->number;
 	first_node->number = second_node->number;

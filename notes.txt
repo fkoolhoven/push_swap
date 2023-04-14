@@ -1,12 +1,13 @@
 Now
-- use checker
+- fix put_ptr_array
+- check for memory leaks
 
 Later
 - make not updating libft when changes are made
-- fix swap function?
-- use checker
-- modify atoi?
 - free memory for stack
 - fix norminette
 - modify Makefile
 - check for memory leaks
+- fix put_ptr_array
+- fix stack_utils
+- rewrite remove double pointers

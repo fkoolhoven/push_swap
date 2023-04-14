@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/13 14:29:28 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:50:36 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef struct s_merge
 // =====FUNCTIONS===============================================================
 
 void	print_linked_list(t_stack *stack);
-void	initialize_stack(t_stack **stack, int argc, char **argv);
+void	validate_input(int argc, char **argv);
+void	initialize_stack(t_stack **stack, int argc, char **arguments);
 bool	stack_a_already_sorted(t_stack **stack_a);
 void	prepend_node(t_stack **stack, t_stack *new_node);
 void	append_node(t_stack **stack, t_stack *new_node);
@@ -76,7 +77,7 @@ void	search_better_option_bottom(t_stack **stack_a,
 			t_stack **stack_b, t_merge *merge);
 void	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge);
 void	check_if_optimal(t_merge *merge, char a_direction, char b_direction);
-bool	in_ideal_position(t_stack **stack_a, t_stack *current_node);
+bool	no_need_to_rotate_a(t_stack **stack_a, t_stack *current_node);
 bool	found_right_position(t_stack *current_node, t_stack *a_compare);
 void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
 void	final_rotate(t_stack **stack_a);

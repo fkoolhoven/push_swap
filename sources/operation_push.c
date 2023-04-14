@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   operation_push.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:17 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/27 17:40:08 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:39:55 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,25 @@ static void	push_top_node(t_stack **stack_origin, t_stack **stack_destination)
 {
 	t_stack	*node_to_push;
 
-	node_to_push = *stack_origin; 
-	if (node_to_push == NULL)
-		return ;
-	if (node_to_push->next) // if not last node to push
+	node_to_push = *stack_origin;
+	if (node_to_push->next)
 	{
 		*stack_origin = node_to_push->next;
 		node_to_push->next->previous = NULL;
 	}
-	else // last note to push after which stack empty
-	{
+	else
 		*stack_origin = NULL;
-	}
-	if (*stack_destination) // destination already exists
+	if (*stack_destination)
 	{
 		node_to_push->next = *stack_destination;
 		node_to_push->next->previous = node_to_push;
-		*stack_destination = node_to_push;
 	}
-	else // destination doesnt exist yet (empty stack)
+	else
 	{
 		node_to_push->previous = NULL;
 		node_to_push->next = NULL;
-		*stack_destination = node_to_push;
 	}
+	*stack_destination = node_to_push;
 	node_to_push->previous = NULL;
 }
 

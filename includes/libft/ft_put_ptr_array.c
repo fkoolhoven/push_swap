@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_put_ptr_array.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 12:39:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 16:31:11 by fkoolhov         ###   ########.fr       */
+/*   Created: 2023/04/14 15:47:42 by fkoolhov          #+#    #+#             */
+/*   Updated: 2023/04/14 18:09:41 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_put_ptr_array_fd(char **two_d_array, int fd)
 {
-	void	*ptr;
+	int	i;
 
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (ptr);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	i = 0;
+	while (two_d_array[i])
+	{
+		ft_putendl_fd(two_d_array[i], fd);
+		i++;
+	}
 }

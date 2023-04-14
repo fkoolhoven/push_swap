@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/13 16:33:31 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:46:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	reset_piles(t_stack **stack_a) // move to different file? // delete? maybe not needed
+void	reset_piles(t_stack **stack_a) // move to different file?
 {
 	t_stack	*current_node;
 
@@ -45,81 +45,63 @@ bool	stack_a_already_sorted(t_stack **stack_a)
 		return (false);
 	while (check->next != NULL)
 	{
-		if (check->number > check->next->number || check->number > top_of_a || check->next->number > top_of_a)
+		if (check->number > check->next->number
+			|| check->number > top_of_a
+			|| check->next->number > top_of_a)
 			return (false);
 		check = check->next;
 	}
 	return (true);
 }
 
-bool	check_for_duplicate_numbers(int argc, char **argv, int i)
+char	**split_arguments(int *argc, char **argv)
 {
-	int	j;
+	char	**old_argv;
+	char	**arguments;
+	int		i;
+	int		j;
 
-	j = i + 1;
-	while (j < argc && argv[j])
-	{
-		if (ft_strncmp(argv[i], argv[j], 11) == 0)
-			return (false);
-		j++;
-	}
-	return (true);
-}
-
-bool	check_for_non_integers(char **argv, int i)
-{
-	int	j;
-
+	old_argv = ft_split(argv[1], ' ');
 	j = 0;
-	if (argv[i][j] == '-')
-		j++;
-	if (ft_isdigit(argv[i][j]) == 0)
-		return (false);
-	while (argv[i][j])
+	i = 0;
+	while (old_argv[i])
+		i++;
+	arguments = ft_calloc(i + 1, sizeof(char *));
+	if (arguments == NULL)
+		ft_error_message("failed to alloc for arguments");
+	arguments[j] = ft_calloc(12, sizeof(char));
+	if (arguments[j] == NULL)
+		ft_error_message("failed to alloc for arguments");
+	arguments[j] = "./push_swap";
+	j++;
+	i = 0;
+	while (old_argv[i])
 	{
-		if (ft_isdigit(argv[i][j]) == 0)
-			return (false);
+		arguments[j] = old_argv[i];
 		j++;
-	}
-	i++;
-	j = 0;
-	return (true);
-}
-
-void	validate_input(int argc, char **argv)
-{
-	int			i;
-	long long	number;
-
-	if (argc <= 1)
-		ft_error_message("too few arguments");
-	i = 1;
-	while (i < argc)
-	{
-		if (!check_for_non_integers(argv, i))
-			ft_error_message("arguments should only be integers");
-		if (!check_for_duplicate_numbers(argc, argv, i))
-			ft_error_message("duplicte numbers not allowed");
-		number = ft_atol(argv[i]);
-		if (number < INT_MIN)
-			ft_error_message("argument(s) smaller than INT_MAX");
-		if (number > INT_MAX)
-			ft_error_message("argument(s) bigger than INT_MAX");
 		i++;
 	}
+	*argc = j;
+	// free old argv that has memory allocated from splitting
+	return (arguments);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**arguments;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	validate_input(argc, argv);
+	if (argc == 2)
+		arguments = split_arguments(&argc, argv);
+	else
+		arguments = argv;
+	validate_input(argc, arguments);
 	if (argc == 2)
 		return (EXIT_SUCCESS);
-	initialize_stack(&stack_a, argc, argv);
+	initialize_stack(&stack_a, argc, arguments);
 	if (stack_a_already_sorted(&stack_a))
 	{
 		final_rotate(&stack_a);
@@ -149,9 +131,10 @@ int	main(int argc, char **argv)
 	// print_linked_list(stack_b);
 	merge_stacks(&stack_a, &stack_b);
 	final_rotate(&stack_a);
-	// printf("\nAT END\n");
-	// print_linked_list(stack_a);
-	// ft_printf("~~~~~~~~~~~~~\n");
-	// print_linked_list(stack_b);
+	printf("\nAT END\n");
+	print_linked_list(stack_a);
+	ft_printf("~~~~~~~~~~~~~\n");
+	print_linked_list(stack_b);
+	// free struct and arguments
 	return (EXIT_SUCCESS);
 }

@@ -11,8 +11,10 @@ OBJ_DIR 		= 	objects
 OBJ_FILES		= 	$(addprefix $(OBJ_DIR)/,$(SRC_FILES:.c=.o))
 SRC_DIR 		= 	sources
 SRC_FILES 		= 	main.c \
+					validate_input.c \
+					initialize_stack.c \
 					stack_utils.c \
-					patience_piles.c \
+					patience_lists.c \
 					patience_sort.c \
 					merge_stacks.c \
 					merge_options.c \
