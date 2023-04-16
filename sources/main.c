@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/14 20:12:30 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:45:56 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,14 @@ char	**split_arguments(int *argc, char **argv)
 		i++;
 	}
 	*argc = j;
-	// free old argv that has memory allocated from splitting
+	i = 0;
+	free (old_argv);
 	return (arguments);
+}
+
+void	check_leaks(void)
+{
+	system("leaks -q push_swap");
 }
 
 int	main(int argc, char **argv)
@@ -87,6 +93,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	char	**arguments;
 
+	atexit(check_leaks);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 2)
@@ -99,37 +106,21 @@ int	main(int argc, char **argv)
 	initialize_stack(&stack_a, argc, arguments);
 	if (stack_a_already_sorted(stack_a))
 	{
-		final_rotate(&stack_a);
-		// printf("\nALREADY SORTED BEFORE PATIENCE\n");
-		// print_linked_list(stack_a);
-		// ft_printf("~~~~~~~~~~~~~\n");
-		// print_linked_list(stack_b);
+		final_rotate(&stack_a, arguments);
 		return (EXIT_SUCCESS);
 	}
 	if (argc == 4)
 	{
 		swap_a(&stack_a);
-		final_rotate(&stack_a);
-		// printf("\nLIST OF THREE\n");
-		// print_linked_list(stack_a);
-		// ft_printf("~~~~~~~~~~~~~\n");
-		// print_linked_list(stack_b);
+		final_rotate(&stack_a, arguments);
 		return (EXIT_SUCCESS);
 	}
 	find_longest_list(&stack_a, 'a');
 	reset_piles(stack_a);
 	find_longest_list(&stack_a, 'd');
 	seperate_lists(&stack_a, &stack_b);
-	// printf("\nBEFORE MERGING\n");
-	// print_linked_list(stack_a);
-	// ft_printf("~~~~~~~~~~~~~\n");
-	// print_linked_list(stack_b);
 	merge_stacks(&stack_a, &stack_b);
-	final_rotate(&stack_a);
-	printf("\nAT END\n");
-	print_linked_list(stack_a);
-	ft_printf("~~~~~~~~~~~~~\n");
-	print_linked_list(stack_b);
-	// free struct and arguments
+	final_rotate(&stack_a, arguments);
+	// free arguments
 	return (EXIT_SUCCESS);
 }

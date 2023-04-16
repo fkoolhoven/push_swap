@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 19:42:53 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:12:35 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	merge_stacks(t_stack **stack_a, t_stack **stack_b)
 			}
 		}
 	}
+	free (merge);
 }

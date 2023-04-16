@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/14 20:08:41 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:28:47 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	check_if_optimal(t_merge *merge, char a_direction, char b_direction);
 bool	no_need_to_rotate_a(t_stack **stack_a, t_stack *current_node);
 bool	found_right_position(t_stack *current_node, t_stack *a_compare);
 void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
-void	final_rotate(t_stack **stack_a);
+void	final_rotate(t_stack **stack_a, char **arguments);
 void	handle_errors(char *message);
 
 #endif

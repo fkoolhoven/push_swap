@@ -6,11 +6,35 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:29:18 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/29 14:17:38 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:43:52 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	free_arguments(char **arguments)
+{
+	arguments = NULL;
+	// int	i;
+
+	// i = 0;
+	// // while (arguments[i])
+	// // {
+	// // 	printf("i = %i\n", i);
+	// // 	free (arguments[i]);
+	// // 	i++;
+	// // }
+	// free (arguments);
+}
+
+void	free_linked_list(t_stack *stack_a)
+{
+	while (stack_a)
+	{
+		free (stack_a);
+		stack_a = stack_a->next;
+	}
+}
 
 int	find_lowest_number(t_stack **stack_a)
 {
@@ -32,7 +56,7 @@ int	find_lowest_number(t_stack **stack_a)
 	return (top_distance);
 }
 
-void	final_rotate(t_stack **stack_a)
+void	final_rotate(t_stack **stack_a, char **arguments)
 {
 	int		stack_size;
 	int		top_distance;
@@ -59,4 +83,6 @@ void	final_rotate(t_stack **stack_a)
 			reverse_rotate_a(stack_a);
 		moves_needed--;
 	}
+	free_linked_list(*stack_a);
+	free_arguments(arguments);
 }

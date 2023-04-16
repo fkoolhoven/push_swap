@@ -15,7 +15,7 @@ SRC_FILES 		= 	main.c \
 					initialize_stack.c \
 					stack_utils.c \
 					patience_lists.c \
-					patience_sort.c \
+					seperate_stacks.c \
 					merge_stacks.c \
 					merge_options.c \
 					merge_distance.c \
