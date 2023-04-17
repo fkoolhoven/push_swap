@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 20:03:11 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:27:16 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	calculate_stack_size(t_stack *stack)
 
 	if (stack == NULL)
 		return (0);
-	stack_size = 1;
-	while (stack->next != NULL)
+	stack_size = 0;
+	while (stack)
 	{
 		stack = stack->next;
 		stack_size++;
@@ -68,7 +68,9 @@ void	prepend_node(t_stack **stack, t_stack *new_node)
 
 void	print_linked_list(t_stack *stack)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (stack)
 	{
 		ft_printf("number at index %i =", i);

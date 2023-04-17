@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:24 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/17 09:36:11 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:48:12 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void	push_a(t_stack **stack_b, t_stack **stack_a);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 void	find_longest_list(t_stack **stack_a, char asc_or_desc);
+bool	find_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top, char asc_or_desc);
+void	create_new_pile(t_stack *current_node, t_stack *pile_top, t_stack **first_top);
+void	reset_piles(t_stack *stack_a);
 void	seperate_lists(t_stack **stack_a, t_stack **stack_b);
 void	merge_stacks(t_stack **stack_a, t_stack **stack_b);
 void	find_distance_first_number(t_stack **stack_a,
@@ -80,7 +83,7 @@ void	check_if_optimal(t_merge *merge, char a_direction, char b_direction);
 bool	no_need_to_rotate_a(t_stack **stack_a, t_stack *current_node);
 bool	found_right_position(t_stack *current_node, t_stack *a_compare);
 void	execute_merge(t_stack **stack_a, t_stack **stack_b, t_merge *merge);
-void	final_rotate(t_stack **stack_a, char **arguments);
+void	final_rotate(t_stack *stack_a, char **arguments);
 void	handle_errors(char *message);
 
 #endif

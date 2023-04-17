@@ -6,24 +6,24 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:17 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 19:39:55 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:17:31 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	push_top_node(t_stack **stack_origin, t_stack **stack_destination)
+static void	push_top_node(t_stack **stack_source, t_stack **stack_destination)
 {
 	t_stack	*node_to_push;
 
-	node_to_push = *stack_origin;
+	node_to_push = *stack_source;
 	if (node_to_push->next)
 	{
-		*stack_origin = node_to_push->next;
+		*stack_source = node_to_push->next;
 		node_to_push->next->previous = NULL;
 	}
 	else
-		*stack_origin = NULL;
+		*stack_source = NULL;
 	if (*stack_destination)
 	{
 		node_to_push->next = *stack_destination;
