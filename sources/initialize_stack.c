@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:45:21 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/16 17:47:41 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:37:54 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*create_new_node(int content)
 	return (new_node);
 }
 
-void	initialize_stack(t_stack **stack, int argc, char **arguments)
+void	initialize_stack(t_stack **stack, int argc, char **arguments, bool arguments_allocated)
 {
 	t_stack	*new_node;
 	int		number;
@@ -40,8 +40,10 @@ void	initialize_stack(t_stack **stack, int argc, char **arguments)
 		number = ft_atoi(arguments[i]);
 		new_node = create_new_node(number);
 		append_node(stack, new_node);
-		free (arguments[i]); // only if split arguments was used!
+		if (arguments_allocated)
+			free (arguments[i]);
 		i++;
 	}
-	free (arguments); // only if split arguments was used!
+	if (arguments_allocated)
+		free (arguments);
 }

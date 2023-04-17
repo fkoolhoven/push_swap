@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/16 17:45:56 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:45:08 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,13 @@ char	**split_arguments(int *argc, char **argv)
 	int		j;
 
 	old_argv = ft_split(argv[1], ' ');
-	j = 0;
 	i = 0;
 	while (old_argv[i])
 		i++;
-	arguments = ft_calloc(i + 1, sizeof(char *));
+	arguments = ft_calloc(i, sizeof(char *));
 	if (arguments == NULL)
 		ft_error_message("failed to alloc for arguments");
-	arguments[j] = ft_calloc(12, sizeof(char));
-	if (arguments[j] == NULL)
-		ft_error_message("failed to alloc for arguments");
-	arguments[j] = "./push_swap";
-	j++;
+	j = 1;
 	i = 0;
 	while (old_argv[i])
 	{
@@ -77,7 +72,6 @@ char	**split_arguments(int *argc, char **argv)
 		i++;
 	}
 	*argc = j;
-	i = 0;
 	free (old_argv);
 	return (arguments);
 }
@@ -92,18 +86,25 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	char	**arguments;
+	bool	arguments_allocated;
 
 	atexit(check_leaks);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 2)
+	{
 		arguments = split_arguments(&argc, argv);
+		arguments_allocated = true;
+	}
 	else
+	{
 		arguments = argv;
+		arguments_allocated = false;
+	}
 	validate_input(argc, arguments);
 	if (argc == 2)
 		return (EXIT_SUCCESS);
-	initialize_stack(&stack_a, argc, arguments);
+	initialize_stack(&stack_a, argc, arguments, arguments_allocated);
 	if (stack_a_already_sorted(stack_a))
 	{
 		final_rotate(&stack_a, arguments);
@@ -121,6 +122,5 @@ int	main(int argc, char **argv)
 	seperate_lists(&stack_a, &stack_b);
 	merge_stacks(&stack_a, &stack_b);
 	final_rotate(&stack_a, arguments);
-	// free arguments
 	return (EXIT_SUCCESS);
 }
