@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:06:47 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/31 17:05:12 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:24:35 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	calculate_amount_of_moves_needed(t_merge *merge, int merge_pattern)
+static int	calculate_amount_of_moves_needed(t_merge *merge, int merge_pattern)
 {
 	int	amount_of_moves_needed;
 

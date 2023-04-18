@@ -6,19 +6,19 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/16 17:12:35 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:25:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_merge	*initialize_merge_struct(t_stack **stack_a)
+static t_merge	*initialize_merge_struct(t_stack **stack_a)
 {
 	t_merge	*merge;
 
 	merge = ft_calloc(1, sizeof(t_merge));
 	if (merge == NULL)
-		ft_error_message("failed to alloc for merge struct");
+		ft_error_message("failed to allocate memory for merge struct");
 	merge->up_down_switch = 'u';
 	merge->a_up_or_down = 'u';
 	merge->b_up_or_down = 'u';

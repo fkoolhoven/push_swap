@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:01:15 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 19:50:12 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:23:27 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ bool	no_need_to_rotate_a(t_stack **stack_a, t_stack *current_node)
 		&& current_node->number < last_node->number
 		&& (*stack_a)->number < last_node->number)
 		return (true);
-	if (current_node->number > (*stack_a)->number
+	else if (current_node->number > (*stack_a)->number
 		&& current_node->number > last_node->number
 		&& (*stack_a)->number < last_node->number)
 		return (true);
-	if (current_node->number < (*stack_a)->number
+	else if (current_node->number < (*stack_a)->number
 		&& current_node->number > last_node->number)
 		return (true);
 	return (false);

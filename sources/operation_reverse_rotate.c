@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:17:44 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/17 12:17:14 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:50:16 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static void	rotate_elements_down(t_stack **stack)
 {
-	t_stack	*first_node;
 	t_stack	*last_node;
 
-	first_node = *stack;
-	if (first_node == NULL || first_node->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	last_node = find_last_node(*stack);
-	prepend_node(stack, last_node);
+	last_node->next = *stack;
+	if (last_node->previous)
+		last_node->previous->next = NULL;
+	last_node->previous = NULL;
+	last_node->next->previous = last_node;
+	*stack = last_node;
 }
 
 void	reverse_rotate_a(t_stack **stack_a)

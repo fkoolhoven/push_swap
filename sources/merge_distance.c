@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:03:01 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 19:50:01 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:23:44 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	find_distance_from_bottom_of_a(t_stack *current_node,
+static void	find_distance_from_bottom_of_a(t_stack *current_node,
 			t_merge *merge, t_stack **stack_a)
 {
 	t_stack	*a_compare;
@@ -28,7 +28,7 @@ void	find_distance_from_bottom_of_a(t_stack *current_node,
 	}
 }
 
-bool	find_distance_from_top_of_a(t_stack *current_node,
+static bool	find_distance_from_top_of_a(t_stack *current_node,
 			t_merge *merge, t_stack **stack_a)
 {
 	t_stack	*a_compare;

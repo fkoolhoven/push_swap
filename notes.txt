@@ -1,14 +1,13 @@
 Now
-- check for memory leaks on edge cases
 
 Later
-- make not updating libft when changes are made
-- fix norminette
+- make not updating libft when changes are made?
 - modify Makefile
-- fix stack_utils
 - rewrite remove double pointers
-- change origin to source
 - check readability
 - clean op .h file
-- make static functions static
+
+Last checks
+- fix norminette
 - remove print linked list function
+- make static functions static
