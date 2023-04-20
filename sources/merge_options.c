@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:07:26 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/03/31 17:16:53 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:22:50 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	search_better_option_bottom(t_stack **stack_a,
+void	search_better_option_bottom_of_b(t_stack **stack_a,
 	t_stack **stack_b, t_merge *merge)
 {
 	t_stack	*current_node;
@@ -33,7 +33,7 @@ void	search_better_option_bottom(t_stack **stack_a,
 	}
 }
 
-void	search_better_option_top(t_stack **stack_a,
+void	search_better_option_top_of_b(t_stack **stack_a,
 	t_stack *current_node, t_merge *merge)
 {
 	while (merge->b_distance < merge->move_amount_optimal && current_node->next)
@@ -49,7 +49,7 @@ void	search_better_option_top(t_stack **stack_a,
 	}
 }
 
-void	find_distance_first_number(t_stack **stack_a,
+void	check_option_first_number(t_stack **stack_a,
 	t_stack *current_node, t_merge *merge)
 {
 	merge->b_up_or_down = 'u';

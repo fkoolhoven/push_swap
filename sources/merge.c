@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_stacks.c                                     :+:      :+:    :+:   */
+/*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 16:25:09 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:39:08 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	merge_stacks(t_merge *merge, t_stack **stack_a, t_stack **stack_b)
+{	
+	t_stack	*current_node;
+
+	while (*stack_b)
+	{
+		current_node = *stack_b;
+		check_option_first_number(stack_a, current_node, merge);
+		if (merge->move_amount_optimal < 2
+			|| current_node == current_node->next)
+			execute_merge(stack_a, stack_b, merge);
+		else
+		{	
+			search_better_option_top_of_b(stack_a, current_node, merge);
+			if (merge->move_amount_optimal < 2)
+				execute_merge(stack_a, stack_b, merge);
+			else
+			{
+				search_better_option_bottom_of_b(stack_a, stack_b, merge);
+				execute_merge(stack_a, stack_b, merge);
+			}
+		}
+	}
+}
 
 static t_merge	*initialize_merge_struct(t_stack **stack_a)
 {
@@ -31,30 +56,11 @@ static t_merge	*initialize_merge_struct(t_stack **stack_a)
 	return (merge);
 }
 
-void	merge_stacks(t_stack **stack_a, t_stack **stack_b)
+void	perform_merge(t_stack **stack_a, t_stack **stack_b)
 {
 	t_merge	*merge;
-	t_stack	*current_node;
 
 	merge = initialize_merge_struct(stack_a);
-	while (*stack_b)
-	{
-		current_node = *stack_b;
-		find_distance_first_number(stack_a, current_node, merge);
-		if (merge->move_amount_optimal < 2
-			|| current_node == current_node->next)
-			execute_merge(stack_a, stack_b, merge);
-		else
-		{	
-			search_better_option_top(stack_a, current_node, merge);
-			if (merge->move_amount_optimal < 2)
-				execute_merge(stack_a, stack_b, merge);
-			else
-			{
-				search_better_option_bottom(stack_a, stack_b, merge);
-				execute_merge(stack_a, stack_b, merge);
-			}
-		}
-	}
+	merge_stacks(merge, stack_a, stack_b);
 	free (merge);
 }

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/18 17:25:31 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:26:46 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@
 // 	}
 // }
 
-
+void	check_leaks(void)
+{
+	system("leaks -q push_swap");
+}
 
 static bool	no_algorithm_needed(int argc, t_stack *stack_a)
 {
@@ -89,10 +92,6 @@ static bool	get_arguments(int *argc, char **argv, char ***arguments)
 		return (false);
 	}
 }
-// void	check_leaks(void)
-// {
-// 	system("leaks -q push_swap");
-// }
 
 int	main(int argc, char **argv)
 {
@@ -101,16 +100,18 @@ int	main(int argc, char **argv)
 	char	**arguments;
 	bool	arguments_allocated;
 
-	//atexit(check_leaks);
+	atexit(check_leaks);
 	arguments_allocated = get_arguments(&argc, argv, &arguments);
 	validate_input(argc, arguments);
 	initialize_stack(&stack_a, argc, arguments, arguments_allocated);
 	if (no_algorithm_needed(argc, stack_a))
 		return (EXIT_SUCCESS);
-	find_longest_list(&stack_a, 'a');
-	find_longest_list(&stack_a, 'd');
-	seperate_lists(&stack_a, &stack_b);
-	merge_stacks(&stack_a, &stack_b);
-	final_rotate(stack_a);
+	else
+	{
+		perform_patience(&stack_a);
+		seperate_stacks(&stack_a, &stack_b);
+		perform_merge(&stack_a, &stack_b);
+		final_rotate(stack_a);
+	}
 	return (EXIT_SUCCESS);
 }

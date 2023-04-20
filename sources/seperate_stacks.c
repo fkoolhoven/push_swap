@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:24:51 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/17 13:33:13 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:11:36 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,12 @@ static int	push_desc_list(t_stack *current_node,
 {
 	int	previous_push;
 
-	previous_push = 0;
-	if (!current_node->left_pile_top)
-		previous_push = current_node->number;
-	else
-		previous_push = current_node->left_pile_top->number;
+	previous_push = current_node->number;
 	push_b(stack_a, stack_b);
 	return (previous_push);
 }
 
-void	seperate_lists(t_stack **stack_a,
+void	seperate_stacks(t_stack **stack_a,
 	t_stack **stack_b)
 {
 	t_stack	*current_node;

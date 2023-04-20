@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:29:18 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 16:22:06 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:29:12 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static void	free_stack(t_stack *stack_a)
 {
+	t_stack	*temp;
+
 	while (stack_a)
 	{
-		free (stack_a);
+		temp = stack_a;
 		stack_a = stack_a->next;
+		free (temp);
 	}
 }
 

@@ -7,7 +7,7 @@ Later
 - check readability
 - clean op .h file
 
-Last checks
+Last checks 
 - fix norminette
 - remove print linked list function
 - make static functions static

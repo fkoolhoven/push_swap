@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:30:07 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 17:36:36 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:16:56 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	check_for_duplicate_numbers(int argc, char **argv, int i)
 	j = i + 1;
 	while (j < argc && argv[j])
 	{
-		if (ft_strncmp(argv[i], argv[j], 1) == 0)
+		if (ft_strncmp(argv[i], argv[j], 11) == 0)
 			return (false);
 		j++;
 	}
