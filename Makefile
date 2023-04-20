@@ -1,8 +1,8 @@
 NAME 			= 	push_swap
-LIBFT			= 	$(addprefix $(LIBFT_DIR)/,libft.a)
 LIBFT_DIR		= 	includes/libft
-FT_PRINTF		= 	$(addprefix $(FT_PRINTF_DIR)/,libftprintf.a)
+LIBFT			= 	$(addprefix $(LIBFT_DIR)/,libft.a)
 FT_PRINTF_DIR	= 	includes/ft_printf
+FT_PRINTF		= 	$(addprefix $(FT_PRINTF_DIR)/,libftprintf.a)
 LIBS			= 	$(LIBFT) $(FT_PRINTF)
 CC 				= 	cc
 CFLAGS 			= 	-Wall -Wextra -Werror
@@ -31,7 +31,7 @@ SRC_FILES 		= 	main.c \
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(LIBFT)
+$(NAME): $(OBJ_FILES) $(LIBS)
 	$(CC) $(OBJ_FILES) $(LIBS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

@@ -6,18 +6,18 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:03:01 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 16:23:44 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:09:09 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 static void	find_distance_from_bottom_of_a(t_stack *current_node,
-			t_merge *merge, t_stack **stack_a)
+			t_merge *merge, t_stack *stack_a)
 {
 	t_stack	*a_compare;
 
-	a_compare = find_last_node(*stack_a);
+	a_compare = find_last_node(stack_a);
 	merge->a_distance = 1;
 	while (merge->a_distance < merge->move_amount_optimal)
 	{
@@ -29,11 +29,8 @@ static void	find_distance_from_bottom_of_a(t_stack *current_node,
 }
 
 static bool	find_distance_from_top_of_a(t_stack *current_node,
-			t_merge *merge, t_stack **stack_a)
+			t_merge *merge, t_stack *a_compare)
 {
-	t_stack	*a_compare;
-
-	a_compare = *stack_a;
 	merge->a_distance = 1;
 	while (merge->a_distance < merge->move_amount_optimal)
 	{
@@ -45,14 +42,14 @@ static bool	find_distance_from_top_of_a(t_stack *current_node,
 	return (false);
 }	
 
-void	find_distance(t_stack **stack_a, t_stack *current_node, t_merge *merge)
+void	find_distance(t_stack *stack_a, t_stack *current_node, t_merge *merge)
 {
-	merge->up_down_switch = 'u';
+	merge->up_down_switch = "up"[0];
 	if (no_need_to_rotate_a(stack_a, current_node))
 		return ;
 	else if (!find_distance_from_top_of_a(current_node, merge, stack_a))
 	{
-		merge->up_down_switch = 'd';
+		merge->up_down_switch = "down"[0];
 		find_distance_from_bottom_of_a(current_node, merge, stack_a);
 	}
 }

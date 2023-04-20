@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:50:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 12:39:08 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:11:39 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ static void	merge_stacks(t_merge *merge, t_stack **stack_a, t_stack **stack_b)
 	while (*stack_b)
 	{
 		current_node = *stack_b;
-		check_option_first_number(stack_a, current_node, merge);
+		check_option_first_number(*stack_a, current_node, merge);
 		if (merge->move_amount_optimal < 2
 			|| current_node == current_node->next)
 			execute_merge(stack_a, stack_b, merge);
 		else
 		{	
-			search_better_option_top_of_b(stack_a, current_node, merge);
+			search_better_option_top_of_b(*stack_a, current_node, merge);
 			if (merge->move_amount_optimal < 2)
 				execute_merge(stack_a, stack_b, merge);
 			else
 			{
-				search_better_option_bottom_of_b(stack_a, stack_b, merge);
+				search_better_option_bottom_of_b(*stack_a, *stack_b, merge);
 				execute_merge(stack_a, stack_b, merge);
 			}
 		}
@@ -44,9 +44,9 @@ static t_merge	*initialize_merge_struct(t_stack **stack_a)
 	merge = ft_calloc(1, sizeof(t_merge));
 	if (merge == NULL)
 		ft_error_message("failed to allocate memory for merge struct");
-	merge->up_down_switch = 'u';
-	merge->a_up_or_down = 'u';
-	merge->b_up_or_down = 'u';
+	merge->up_down_switch = "up"[0];
+	merge->a_direction = "up"[0];
+	merge->b_direction = "up"[0];
 	merge->a_distance = 0;
 	merge->b_distance = 0;
 	merge->move_amount_optimal = 0;

@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:06:47 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 16:24:35 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:08:19 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	check_if_optimal(t_merge *merge, char a_direction, char b_direction)
 	int	new_move_amount;
 
 	new_move_amount = 0;
-	if (a_direction == 'u' && b_direction == 'd')
+	if (a_direction == "up"[0] && b_direction == "down"[0])
 		new_move_amount = calculate_amount_of_moves_needed(merge, 1);
-	else if (a_direction == 'd' && b_direction == 'd')
+	else if (a_direction == "down"[0] && b_direction == "down"[0])
 		new_move_amount = calculate_amount_of_moves_needed(merge, 2);
-	else if (a_direction == 'd' && b_direction == 'u')
+	else if (a_direction == "down"[0] && b_direction == "up"[0])
 		new_move_amount = calculate_amount_of_moves_needed(merge, 3);
-	else if (a_direction == 'u' && b_direction == 'u')
+	else if (a_direction == "up"[0] && b_direction == "up"[0])
 		new_move_amount = calculate_amount_of_moves_needed(merge, 4);
 	if (new_move_amount < merge->move_amount_optimal)
 	{
-		merge->a_up_or_down = a_direction;
-		merge->b_up_or_down = b_direction;
+		merge->a_direction = a_direction;
+		merge->b_direction = b_direction;
 		merge->a_moves = merge->a_distance;
 		merge->b_moves = merge->b_distance;
 		merge->move_amount_optimal = new_move_amount;

@@ -6,30 +6,11 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/20 13:26:46 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:24:33 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	print_linked_list(t_stack *stack)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (stack)
-// 	{
-// 		ft_printf("number at index %i =", i);
-// 		ft_printf(" %i\n", stack->number);
-// 		stack = stack->next;
-// 		i++;
-// 	}
-// }
-
-void	check_leaks(void)
-{
-	system("leaks -q push_swap");
-}
 
 static bool	no_algorithm_needed(int argc, t_stack *stack_a)
 {
@@ -97,18 +78,17 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	**arguments;
-	bool	arguments_allocated;
+	char	**args;
+	bool	args_allocated;
 
-	atexit(check_leaks);
-	arguments_allocated = get_arguments(&argc, argv, &arguments);
-	validate_input(argc, arguments);
-	initialize_stack(&stack_a, argc, arguments, arguments_allocated);
+	args_allocated = get_arguments(&argc, argv, &args);
+	validate_input(argc, args);
+	initialize_stack(&stack_a, argc, args, args_allocated);
 	if (no_algorithm_needed(argc, stack_a))
 		return (EXIT_SUCCESS);
 	else
 	{
-		perform_patience(&stack_a);
+		perform_patience(stack_a);
 		seperate_stacks(&stack_a, &stack_b);
 		perform_merge(&stack_a, &stack_b);
 		final_rotate(stack_a);

@@ -6,26 +6,26 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:01:15 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 16:23:27 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:00:20 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	no_need_to_rotate_a(t_stack **stack_a, t_stack *current_node)
+bool	no_need_to_rotate_a(t_stack *stack_a, t_stack *current_node)
 {
 	t_stack	*last_node;
 
-	last_node = find_last_node(*stack_a);
-	if (current_node->number < (*stack_a)->number
+	last_node = find_last_node(stack_a);
+	if (current_node->number < stack_a->number
 		&& current_node->number < last_node->number
-		&& (*stack_a)->number < last_node->number)
+		&& stack_a->number < last_node->number)
 		return (true);
-	else if (current_node->number > (*stack_a)->number
+	else if (current_node->number > stack_a->number
 		&& current_node->number > last_node->number
-		&& (*stack_a)->number < last_node->number)
+		&& stack_a->number < last_node->number)
 		return (true);
-	else if (current_node->number < (*stack_a)->number
+	else if (current_node->number < stack_a->number
 		&& current_node->number > last_node->number)
 		return (true);
 	return (false);

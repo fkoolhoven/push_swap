@@ -6,13 +6,13 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:50:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 12:40:52 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:20:17 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_stack	*tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
+static void	tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
 {
 	t_stack	*current_node;
 
@@ -26,13 +26,12 @@ static t_stack	*tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
 		else if (asc_or_desc == "descending"[0])
 			current_node->part_of_descending_list = true;
 		if (!current_node->left_pile_top)
-			return (current_node);
+			break ;
 		current_node = current_node->left_pile_top;
 	}
-	return (NULL);
 }
 
-static void	find_longest_list(t_stack **stack_a, char asc_or_desc)
+static void	find_longest_list(t_stack *stack_a, char asc_or_desc)
 {
 	t_stack	*current_node;
 	t_stack	*pile_top;
@@ -40,7 +39,7 @@ static void	find_longest_list(t_stack **stack_a, char asc_or_desc)
 	bool	pile;
 
 	pile_top = NULL;
-	current_node = *stack_a;
+	current_node = stack_a;
 	while (current_node)
 	{
 		if (!current_node->part_of_ascending_list)
@@ -55,9 +54,9 @@ static void	find_longest_list(t_stack **stack_a, char asc_or_desc)
 	tag_nodes_as_part_of_list(&pile_top, asc_or_desc);
 }
 
-void	perform_patience(t_stack **stack_a)
+void	perform_patience(t_stack *stack_a)
 {
 	find_longest_list(stack_a, "ascending"[0]);
-	reset_piles(*stack_a);
+	reset_piles(stack_a);
 	find_longest_list(stack_a, "descending"[0]);
 }

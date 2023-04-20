@@ -16,17 +16,17 @@ $(NAME): $(OBJ_FILES) $(LIBFT)
 	cp $(LIBFT) ./$(NAME)
 	$(AR) $(NAME) $(OBJ_FILES) 
 
-#$(LIBFT):
-#	make bonus -C libft
+$(LIBFT):
+	make bonus -C libft
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@	
 
 clean:
-	$(RM)r $(OBJ_DIR)
+	@$(RM)r $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 			
 re: fclean all

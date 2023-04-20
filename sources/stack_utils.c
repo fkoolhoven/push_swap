@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:50:05 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/18 17:29:20 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:42:25 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ bool	stack_a_already_sorted(t_stack *stack_a)
 		stack_a = stack_a->next;
 	if (stack_a->next == NULL)
 		return (true);
-	stack_a = stack_a->next;
-	while (stack_a && stack_still_seems_sorted(stack_a, top_of_a))
-		stack_a = stack_a->next;
-	if (stack_a == NULL)
-		return (true);
 	else
-		return (false);
+	{
+		stack_a = stack_a->next;
+		while (stack_a && stack_still_seems_sorted(stack_a, top_of_a))
+			stack_a = stack_a->next;
+		if (stack_a == NULL)
+			return (true);
+		else
+			return (false);
+	}
 }
 
 int	calculate_stack_size(t_stack *stack)

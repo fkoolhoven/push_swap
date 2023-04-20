@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:12:55 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/13 13:25:06 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:45:48 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ long long	ft_atol(const char *str)
 	minus = 1;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v' \
 	|| str[i] == '\f' || str[i] == '\r')
-	{
 		i++;
-	}
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
