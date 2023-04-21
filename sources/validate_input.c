@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:30:07 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:16:19 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:41:57 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	validate_input(int argc, char **args)
 	long long	number;
 
 	if (argc <= 1)
-		ft_error_message("too few arguments");
+		exit (EXIT_SUCCESS);
 	i = 1;
 	while (i < argc)
 	{
@@ -62,7 +62,7 @@ void	validate_input(int argc, char **args)
 			ft_error_message("duplicte numbers not allowed");
 		number = ft_atol(args[i]);
 		if (number < INT_MIN)
-			ft_error_message("argument(s) smaller than INT_MAX");
+			ft_error_message("argument(s) smaller than INT_MIN");
 		if (number > INT_MAX)
 			ft_error_message("argument(s) bigger than INT_MAX");
 		i++;
