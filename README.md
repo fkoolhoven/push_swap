@@ -61,9 +61,10 @@ My algorithm was minimized the amount of moves sufficiently to pass this project
 
 # Important Learnings
 
-1. I represented the two stacks as two way linked lists (with a previous and next node pointer). I gained hands-on experience with linked lists and list manipulation.
+1. I gained hands-on experience with linked lists and list manipulation. I represented the two stacks as two way linked lists (with a previous and next node pointer). 
 2. I learned about complexity and big-O notation.
 3. I learned about various sorting algorithms.
+4. I practiced creative problem solving by coming up with my own algorithm instead of using an existing one.
 
 # Contact
 
