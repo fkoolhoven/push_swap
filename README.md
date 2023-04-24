@@ -50,6 +50,19 @@ For example:
 ```c
 ./push_swap  2 10 3 6 5 8 -31 0
 ```
+will give the following output:
+```c
+ra
+pb
+ra
+pb
+ra
+pa
+ra
+ra
+pa
+ra
+```
 
 # My solution
 Given that highest marks were achieved by using the least amount of commands, slower algorithms that read the data more times could be more precise than algortihms optimised for speed. The goal was to minimize the amount of operations.
