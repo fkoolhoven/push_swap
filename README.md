@@ -56,7 +56,7 @@ Given that highest marks were achieved by using the least amount of commands, sl
 
 To solve this "puzzle" I wrote my own algorithm . It is a combination of a form of patience sort and a sort of merging algorithm. First I find the longest list of ascending numbers in stack_a and in the remaining numbers I find the longest list of descending numbers. I seperate these lists in a way so that stack_a is already fully sorted and stack_b will be "somewhat sorted", which will make the merging more efficient. Then to merge the stacks I check which number in stack_b would take the least amount of operations to move to it's correct position in stack_a. I merge the stacks and do a final rotation of stack_a to get the smallest number at the top.
 
-My algorithm was minimized the amount of moves sufficiently to pass this project with 100%.
+My algorithm minimized the amount of moves sufficiently to pass this project with 100%.
 
 
 # Important learnings
