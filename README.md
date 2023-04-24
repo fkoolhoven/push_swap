@@ -60,7 +60,7 @@ To solve this "puzzle" I wrote my own algorithm . It is a combination of a form 
 # Important Learnings
 
 1. I represented the two stacks as two way linked lists (with a previous and next node pointer). I gained hands-on experience with linked lists and list manipulation.
-2. I learnt about complexity and big-O notation.
+2. I learned about complexity and big-O notation.
 3. I learned about various sorting algorithms.
 
 # Contact
