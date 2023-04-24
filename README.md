@@ -15,6 +15,7 @@ to manipulate both stacks. Your goal? Write a program in C called push_swap whic
 on the standard output the smallest program, made of push_swap language instructions, that sorts the integers received as arguments.
 
 # The Rules
+
 The goal is to sort in ascending order numbers into stack a. To do so you have the following operations at your disposal:
 sa (swap a): Swap the first 2 elements at the top of stack a.
 sb (swap b): Swap the first 2 elements at the top of stack b.
