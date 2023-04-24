@@ -1,12 +1,13 @@
 <div align="center">
 
-  <h1>PUSH_SWAP</h1>
-  
-  <p>
+  <img src="img/PUSH_SWAP.png" alt="logo" width="1000" height="auto" />
+ 
+ <p>
     This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions.
   </p>
-</div>
   
+</div>
+
 
 # About the project
 
