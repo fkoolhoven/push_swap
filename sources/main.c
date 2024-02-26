@@ -6,7 +6,7 @@
 /*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:29:20 by felicia           #+#    #+#             */
-/*   Updated: 2023/04/20 14:24:33 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:57:36 by fkoolhov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 	char	**args;
 	bool	args_allocated;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	args_allocated = get_arguments(&argc, argv, &args);
 	validate_input(argc, args);
 	initialize_stack(&stack_a, argc, args, args_allocated);
