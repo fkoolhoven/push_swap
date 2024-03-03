@@ -1,9 +1,13 @@
 NAME 			= 	push_swap
-LIBFT_DIR		= 	includes/libft
-LIBFT			= 	$(addprefix $(LIBFT_DIR)/,libft.a)
-FT_PRINTF_DIR	= 	includes/ft_printf
-FT_PRINTF		= 	$(addprefix $(FT_PRINTF_DIR)/,libftprintf.a)
+INC				=	includes
+LIBS_DIR		=	libs
+
+LIBFT_DIR		= 	$(LIBS_DIR)/libft
+LIBFT			= 	$(LIBFT_DIR)/libft.a
+FT_PRINTF_DIR	= 	$(LIBS_DIR)/ft_printf
+FT_PRINTF		= 	$(FT_PRINTF_DIR)/libftprintf.a
 LIBS			= 	$(LIBFT) $(FT_PRINTF)
+
 CC 				= 	cc
 CFLAGS 			= 	-Wall -Wextra -Werror
 RM				= 	rm -f
@@ -36,7 +40,7 @@ $(NAME): $(OBJ_FILES) $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -I $(INC) $(CFLAGS) -c $< -o $@
 
 $(LIBS):
 	make bonus -C $(LIBFT_DIR)

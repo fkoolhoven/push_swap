@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   merge_distance.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:03:01 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:09:09 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:46:51 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	find_distance_from_bottom_of_a(t_stack *current_node,
 			t_merge *merge, t_stack *stack_a)

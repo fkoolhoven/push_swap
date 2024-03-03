@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   patience.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:50:33 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:20:17 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:49:49 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
-static void	tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
+static void	tag_nodes_as_part_of_list(t_stack **top, int asc_or_desc)
 {
 	t_stack	*current_node;
 
@@ -21,9 +21,9 @@ static void	tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
 		current_node = current_node->right_pile_top;
 	while (current_node)
 	{
-		if (asc_or_desc == "ascending"[0])
+		if (asc_or_desc == ASCENDING)
 			current_node->part_of_ascending_list = true;
-		else if (asc_or_desc == "descending"[0])
+		else if (asc_or_desc == DESCENDING)
 			current_node->part_of_descending_list = true;
 		if (!current_node->left_pile_top)
 			break ;
@@ -31,7 +31,7 @@ static void	tag_nodes_as_part_of_list(t_stack **top, char asc_or_desc)
 	}
 }
 
-static void	find_longest_list(t_stack *stack_a, char asc_or_desc)
+static void	find_longest_list(t_stack *stack_a, int asc_or_desc)
 {
 	t_stack	*current_node;
 	t_stack	*pile_top;
@@ -56,7 +56,7 @@ static void	find_longest_list(t_stack *stack_a, char asc_or_desc)
 
 void	perform_patience(t_stack *stack_a)
 {
-	find_longest_list(stack_a, "ascending"[0]);
+	find_longest_list(stack_a, ASCENDING);
 	reset_piles(stack_a);
-	find_longest_list(stack_a, "descending"[0]);
+	find_longest_list(stack_a, DESCENDING);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:30:07 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:41:57 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:47 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static bool	check_for_duplicate_numbers(int argc, char **args, int i)
 {

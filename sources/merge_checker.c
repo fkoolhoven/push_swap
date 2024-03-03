@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   merge_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 15:01:15 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:00:20 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:46:33 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 bool	no_need_to_rotate_a(t_stack *stack_a, t_stack *current_node)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operation_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:09:43 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/14 19:41:06 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:28 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	swap_top_nodes(t_stack **stack)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   patience_piles.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:02:25 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 12:41:14 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:48:51 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	reset_piles(t_stack *stack_a)
 {
@@ -52,15 +52,15 @@ static void	put_current_node_on_pile(t_stack *current_node, t_stack *pile_top,
 }
 
 bool	find_pile(t_stack *current_node, t_stack *pile_top,
-	t_stack **first_top, char asc_or_desc)
+	t_stack **first_top, int asc_or_desc)
 {
 	t_stack	*stored;
 
 	stored = NULL;
 	while (pile_top)
 	{
-		if ((current_node->number < pile_top->number && asc_or_desc == 'a')
-			|| (current_node->number > pile_top->number && asc_or_desc == 'd'))
+		if ((current_node->number < pile_top->number && asc_or_desc == ASCENDING)
+			|| (current_node->number > pile_top->number && asc_or_desc == DESCENDING))
 		{
 			put_current_node_on_pile(current_node, pile_top, stored, first_top);
 			return (true);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   seperate_stacks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:24:51 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 13:11:36 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:40 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	push_rest(t_stack *current_node,
 	t_stack **stack_a, t_stack **stack_b, int previous)

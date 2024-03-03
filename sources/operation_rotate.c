@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operation_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:17:46 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/17 12:17:19 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:24 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	rotate_elements_up(t_stack **stack)
 {

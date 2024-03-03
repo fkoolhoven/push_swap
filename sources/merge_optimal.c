@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   merge_optimal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 16:06:47 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:08:19 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:46:59 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static int	calculate_amount_of_moves_needed(t_merge *merge, int merge_pattern)
 {

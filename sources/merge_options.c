@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   merge_options.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:07:26 by fkoolhov          #+#    #+#             */
-/*   Updated: 2023/04/20 14:08:04 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:05 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	search_better_option_bottom_of_b(t_stack *stack_a,
 	t_stack *stack_b, t_merge *merge)

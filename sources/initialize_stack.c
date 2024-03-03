@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_stack.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkoolhov <fkoolhov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: felicia <felicia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 19:45:21 by fkoolhov          #+#    #+#             */
-/*   Updated: 2024/02/26 18:57:45 by fkoolhov         ###   ########.fr       */
+/*   Updated: 2024/03/03 22:46:19 by felicia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 static t_stack	*create_new_node(int number)
 {
